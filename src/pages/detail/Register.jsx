@@ -1,4 +1,4 @@
-const Register = () => {
+export default function Register(){
     return ( 
         <div>
             
@@ -6,4 +6,3 @@ const Register = () => {
      );
 }
  
-export default Register;

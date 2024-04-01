@@ -1,9 +1,7 @@
-const NavDash = () => {
-    return ( 
+export default function NavDash(){
+    return(
         <div>
-            
+
         </div>
-     );
+    )
 }
- 
-export default NavDash;

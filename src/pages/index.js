@@ -1,11 +1,12 @@
+import LayOut from "../component/LayOut";
 
 
 export default function Home() {
   return (
-    <div>
+    <LayOut>
       <h1 className="text-3xl font-bold text-center hover:underline">
         Hello world!
       </h1>
-    </div>
+    </LayOut>
   );
 }
