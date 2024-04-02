@@ -1,6 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Butterfly+Kids&display=swap');
+
+
+/* home css */
+.butter{
+  font-family: "Butterfly Kids", cursive;
+  font-weight: 400;
+}
+
+.logo{
+  width: 13rem;
+  filter: grayscale(100%);
+}
+
+.logo:hover{
+  filter: none;
+}
+
+.tengah{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.dash{
+  border-radius: 100px;
+  height: 500px;
+  width: 300px;
+  object-fit: fill;
+}
+
+.search-navbar{
+  padding: 10px 30px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  width: 700px;
+}
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -12,6 +50,8 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/* home css*/
+  
 @layer utilities {
   .text-balance {
     text-wrap: balance;
