@@ -6,14 +6,14 @@ import { useRouter } from "next/router";
 export default function Navbars(){
     const route = useRouter();
     return(
-        <div className="mb-5">
+        <div className="mb-5" data-aos="fade-down">
         <Navbar  bg="ligth" variant="ligth">
             <Container className="py-0">
                 <Navbar.Brand className="fw-bold fs-4">Travel<span style={{color:"#0d6efd"}}>Land</span></Navbar.Brand>
                 <div><input placeholder="search" className="search-navbar"/></div>
                 <Nav className="gap-3">
-                    <button className="btn" onClick={()=> route.push("/detail/login")}>Login</button>
-                    <button className="btn btn-primary" onClick={()=> route.push("/detail/register")}>Register</button>
+                    <button className="btn" onClick={()=> route.push("/detail/Login")}>Login</button>
+                    <button className="btn btn-primary" onClick={()=> route.push("/detail/Register")}>Register</button>
                 </Nav>
             </Container>
         </Navbar>

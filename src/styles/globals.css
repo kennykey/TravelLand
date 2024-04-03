@@ -32,6 +32,25 @@
   width: 300px;
   object-fit: fill;
 }
+.cardText{
+    top: 80%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    color: transparent;
+}
+
+.cardText:hover{
+  padding: 20px;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  background: rgb(27, 27, 27, 0.5);
+  color: white;
+}
 
 .search-navbar{
   padding: 10px 30px;

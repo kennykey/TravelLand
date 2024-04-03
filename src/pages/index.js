@@ -1,6 +1,9 @@
+"use client"
+import AOS from "aos";
 import axios from "axios";
 import { useRouter } from "next/router";
 import LayOut from "../component/LayOut";
+import { useEffect } from "react";
 import 'boxicons/css/boxicons.min.css';
 
 export async function getServerSideProps(){
@@ -12,13 +15,18 @@ export async function getServerSideProps(){
   return {props:{banner:resp.data.data}};
 }
 
-export default function Home({banner,promo}) {
+export default function Home({banner}) {
+
+  useEffect(() => {
+    AOS.init({});
+  }, []);
+
   const route = useRouter();
   return (
     <LayOut>
       <section>
         <div className="container-fluid row tengah">
-          <div className="container col-md-6 text-start" style={{paddingLeft:"150px"}}>
+          <div className="container col-md-6 text-start" data-aos="fade-right" style={{paddingLeft:"150px"}}>
               <h5 className="butter text-secondary fs-6">Relax & Enjoy the vacation</h5>
               <h1 className="fw-bold">Choose <span style={{color:"#0d6efd"}}>Travel And Books</span> Your Hotel With Us</h1>
               <p className="text-muted">Lorem ipsum dolor sit amet consectetur. Hac consequat hac arcu sed. Lectus ante ut in mattis ornare commodo nisi. Tortor tincidunt fames quam fusce convallis eget pulvinar.</p>
@@ -27,7 +35,7 @@ export default function Home({banner,promo}) {
                   <button className="btn btn-outline-primary rounded-pill"><i class='bx bx-right-arrow' ></i> Lihat Detail</button>
               </div>
           </div>
-          <div className="container col-md-6 tengah">
+          <div className="container col-md-6 tengah" data-aos="fade-left">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner ps-5" style={{width:"350px"}}>
                       <div className="carousel-item active tengah">
@@ -46,7 +54,7 @@ export default function Home({banner,promo}) {
       </section>
       
       <section>
-        <div className="container-fluid tengah my-5 gap-3">
+        <div className="container-fluid tengah my-5 gap-3" data-aos="flip-up">
             <div class="card logo" style={{border:"none"}}>
                 <img src="pesawat1.svg" class="card-img" alt="logo1"/>
             </div>
@@ -66,18 +74,23 @@ export default function Home({banner,promo}) {
       </section>
 
       <section>
-          <div className="container px-4">
+          <div className="container px-4" data-aos="fade-down-right">
             <h5 className="text-primary italic">Destinasi terkenal</h5>
             <h2 className="text-start fw-bold"><i class='bx bxs-plane-alt'></i> Destinasi Yang Paling Populer</h2>
           </div>
-        <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
+        <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%"}}>
         {banner.map((bann)=>(
           <div className="card" style={{width:"16rem"}}>
               <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
+              <div className="cardText">
+                <h5 className="card-title">{bann.name}</h5>
+              </div>
           </div>
         ))}
         </div>
       </section>
+
+      <hr className="solid-border mt-5"/>
     </LayOut>
   );
 }
