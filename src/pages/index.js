@@ -1,27 +1,50 @@
 "use client"
 import AOS from "aos";
 import axios from "axios";
-import { useRouter } from "next/router";
 import LayOut from "../component/LayOut";
 import { useEffect } from "react";
 import 'boxicons/css/boxicons.min.css';
 
 export async function getServerSideProps(){
-  const resp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/banners',{
+  const bannResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/banners',{
     headers:{
       apiKey:'24405e01-fbc1-45a5-9f5a-be13afcd757c'
     },
   });
-  return {props:{banner:resp.data.data}};
+
+  const promoResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/promos',{
+    headers:{
+      apiKey:'24405e01-fbc1-45a5-9f5a-be13afcd757c'
+    },
+  });
+
+  const categoryResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/categories',{
+    headers:{
+      apiKey:'24405e01-fbc1-45a5-9f5a-be13afcd757c'
+    },
+  });
+
+  const activityResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/activities',{
+    headers:{
+      apiKey:'24405e01-fbc1-45a5-9f5a-be13afcd757c'
+    },
+  });
+
+  return {
+      props:{
+        banner:bannResp.data.data,
+        promos:promoResp.data.data,
+        category:categoryResp.data.data,
+        activity:activityResp.data.data
+      }
+    };
 }
 
-export default function Home({banner}) {
-
+export default function Home({banner,promos,category,activity}) {
   useEffect(() => {
     AOS.init({});
   }, []);
 
-  const route = useRouter();
   return (
     <LayOut>
       <section>
@@ -74,20 +97,70 @@ export default function Home({banner}) {
       </section>
 
       <section>
+        <div className="my-5">
           <div className="container px-4" data-aos="fade-down-right">
-            <h5 className="text-primary italic">Destinasi terkenal</h5>
-            <h2 className="text-start fw-bold"><i class='bx bxs-plane-alt'></i> Destinasi Yang Paling Populer</h2>
-          </div>
-        <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%"}}>
-        {banner.map((bann)=>(
-          <div className="card" style={{width:"16rem"}}>
-              <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
-              <div className="cardText">
-                <h5 className="card-title">{bann.name}</h5>
+              <h5 className="text-primary italic">Destinasi terkenal</h5>
+              <h2 className="text-start fw-bold"><i class='bx bxs-plane-alt'></i> Destinasi Yang Paling Populer</h2>
+            </div>
+            <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%"}}>
+            {banner.map((bann)=>(
+              <div className="card" style={{width:"16rem"}}>
+                  <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
+                  <div className="cardText">
+                    <h5 className="card-title">{bann.name}</h5>
+                  </div>
+              </div>
+            ))}
+            </div>
+        </div>
+      </section>
+
+      <section>
+          <div className="my-5">
+              <div className="container px-4 text-end">
+                <h5 className="text-primary italic">Promo saat ini</h5>
+                <h2 className="fw-bold">Promo yang paling diminati <i class='bx bxs-purchase-tag-alt'></i></h2>
+              </div>
+              <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
+                {promos.map((prom)=>(
+                    <div>
+                      <img src={prom.imageUrl} className="card-img" style={{height:"11rem"}}/>
+                    </div>
+                  ))}
               </div>
           </div>
-        ))}
-        </div>
+      </section>
+      
+      <section>
+          <div className="my-5">
+              <div className="container px-4">
+                <h5 className="text-primary italic">Categories lokasi</h5>
+                <h2 className="text-start fw-bold"><i class='bx bxs-category'></i> Categories berdasarkan negara</h2>
+              </div>
+              <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
+                {category.map((cat)=>(
+                    <div>
+                      <img src={cat.imageUrl} className="card-img" style={{height:"11rem"}}/>
+                    </div>
+                  ))}
+              </div>
+          </div>
+      </section>
+
+      <section>
+          <div className="my-5">
+              <div className="container px-4 text-end">
+                <h5 className="text-primary italic">Activities yang tersedia</h5>
+                <h2 className="fw-bold">Activities yang bisa dikunjungi <i class='bx bxs-calendar'></i></h2>
+              </div>
+              <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
+                {activity.map((acti)=>(
+                    <div>
+                      <img src={acti.imageUrls} className="card-img" style={{height:"11rem"}}/>
+                    </div>
+                  ))}
+              </div>
+          </div>
       </section>
 
       <hr className="solid-border mt-5"/>
