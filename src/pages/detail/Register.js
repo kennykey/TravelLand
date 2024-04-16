@@ -1,8 +1,7 @@
-export default function Register(){
-    return ( 
-        <div>
-            
-        </div>
-     );
+export default function Register() {
+  return (
+    <div>
+      Register
+    </div>
+  )
 }
- 

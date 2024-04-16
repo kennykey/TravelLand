@@ -3,7 +3,9 @@ import AOS from "aos";
 import axios from "axios";
 import LayOut from "../component/LayOut";
 import { useEffect } from "react";
-import 'boxicons/css/boxicons.min.css';
+import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 
 export async function getServerSideProps(){
   const bannResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/banners',{
@@ -58,20 +60,17 @@ export default function Home({banner,promos,category,activity}) {
                   <button className="btn btn-outline-primary rounded-pill"><i class='bx bx-right-arrow' ></i> Lihat Detail</button>
               </div>
           </div>
-          <div className="container col-md-6 tengah" data-aos="fade-left">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner ps-5" style={{width:"350px"}}>
-                      <div className="carousel-item active tengah">
-                          <img src="landing2.jpg" className="d-block dash" alt="part2"/>
-                      </div>
-                      <div className="carousel-item tengah">
-                          <img src="landing.jpg" className="d-block dash" alt="part"/>
-                      </div>
-                      <div className="carousel-item tengah">
-                          <img src="landing3.jpg" className="d-block dash" alt="part3"/>
-                      </div>
-                </div>
-            </div>
+          <div className="container col-md-6 tengah" data-aos="fade-left" style={{width:"400px"}}>
+            <Swiper
+              modules={[Virtual, Pagination ,Autoplay]}
+              slidesPerView={1}
+              autoplay={{delay: 2500}}
+              pagination={{clickable: true}}
+              virtual>
+                <SwiperSlide><img src="landing2.jpg" className="d-block dash" alt="part2"/></SwiperSlide>
+                <SwiperSlide><img src="landing.jpg" className="d-block dash" alt="part"/></SwiperSlide>
+                <SwiperSlide><img src="landing3.jpg" className="d-block dash" alt="part3"/></SwiperSlide>
+            </Swiper>
           </div>
         </div>
       </section>
@@ -122,11 +121,19 @@ export default function Home({banner,promos,category,activity}) {
                 <h2 className="fw-bold">Promo yang paling diminati <i class='bx bxs-purchase-tag-alt'></i></h2>
               </div>
               <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
-                {promos.map((prom)=>(
-                    <div>
-                      <img src={prom.imageUrl} className="card-img" style={{height:"11rem"}}/>
-                    </div>
+                <Swiper
+                  modules={[Virtual, Navigation, Pagination]}
+                  slidesPerView={3}
+                  spaceBetween={30}
+                  navigation={true}
+                  virtual
+                >
+                  {promos.map((prom) => (
+                    <SwiperSlide>
+                      <img src={prom.imageUrl} className="card-img"/>
+                    </SwiperSlide>
                   ))}
+                </Swiper>
               </div>
           </div>
       </section>
