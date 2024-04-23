@@ -3,31 +3,35 @@ import { useRouter } from "next/router";
 export default function Sidebar(){
     const route = useRouter();
     return ( 
-        <div className="sidebar">
+        <div className="sidebar me-5" style={{borderRight:"2px solid #3333"}}>
             <div className="list-group list-group-flush">
                 <a className="list-group-item list-group-item-action py-2 my-1" onClick={() => route.push("/")}>
                     <i className='bx bx-home-alt-2 fs-5'></i>
-                    <span className="ms-2 fs-5">Dashboard</span>
+                    <span className="ms-1 fs-5">Home</span>
                 </a>
-                <a className="list-group-item list-group-item-action py-2 my-1">
+                <a className="list-group-item list-group-item-action py-2 my-1" onClick={()=>route.push("/dashPage/userList")}>
+                    <i class='bx bxs-user fs-5'></i>
+                    <span className="fs-5">UserList</span>
+                </a>
+                <a className="list-group-item list-group-item-action py-2 my-1" onClick={()=>route.push("/dashPage/destiny")}>
                     <i className='bx bx-location-plus fs-5'></i>
-                    <span className="ms-2 fs-5">Banner</span>
+                    <span className="fs-5">Banner</span>
                 </a>
-                <a className="list-group-item list-group-item-action py-2 my-1">
+                <a className="list-group-item list-group-item-action py-2 my-1" onClick={()=>route.push("/dashPage/Promo")}>
                     <i className='bx bxs-discount fs-5'></i>
-                    <span className="ms-2 fs-5">Promo</span>
+                    <span className="fs-5">Promo</span>
                 </a>
-                <a className="list-group-item list-group-item-action py-2 my-1">
+                <a className="list-group-item list-group-item-action py-2 my-1" onClick={()=>route.push("/dashPage/category")}>
                     <i className='bx bx-category-alt fs-5'></i>
-                    <span className="ms-2 fs-5">Category</span>
+                    <span className="fs-5">Category</span>
                 </a>
-                <a className="list-group-item list-group-item-action py-2 my-1">
+                <a className="list-group-item list-group-item-action py-2 my-1" onClick={()=>route.push("/dashPage/activity")}>
                     <i className='bx bx-calendar-event fs-5'></i>
-                    <span className="ms-2 fs-5">Activity</span>
+                    <span className="fs-5">Activity</span>
                 </a>
                 <a className="list-group-item list-group-item-action py-2 my-1">
                     <i className='bx bx-images fs-5'></i>
-                    <span className="ms-2 fs-5">Upload</span>
+                    <span className="fs-5">Upload</span>
                 </a>
             </div>
         </div>

@@ -1,51 +1,23 @@
 "use client"
 import AOS from "aos";
-import axios from "axios";
 import LayOut from "../component/LayOut";
 import { useEffect } from "react";
 import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useRouter } from "next/router";
+import useBanner from "@/useApi/useBanner";
+import usePromo from "@/useApi/usePromo";
 
-
-export async function getServerSideProps(){
-  const bannResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/banners',{
-    headers:{
-      apiKey:'24405e01-fbc1-45a5-9f5a-be13afcd757c'
-    },
-  });
-
-  const promoResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/promos',{
-    headers:{
-      apiKey:'24405e01-fbc1-45a5-9f5a-be13afcd757c'
-    },
-  });
-
-  const categoryResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/categories',{
-    headers:{
-      apiKey:'24405e01-fbc1-45a5-9f5a-be13afcd757c'
-    },
-  });
-
-  const activityResp = await axios.get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/activities',{
-    headers:{
-      apiKey:'24405e01-fbc1-45a5-9f5a-be13afcd757c'
-    },
-  });
-
-  return {
-      props:{
-        banner:bannResp.data.data,
-        promos:promoResp.data.data,
-        category:categoryResp.data.data,
-        activity:activityResp.data.data
-      }
-    };
-}
-
-export default function Home({banner,promos,category,activity}) {
+export default function Home() {
   useEffect(() => {
     AOS.init({});
+    getBanner();
+    getPromo()
   }, []);
+
+  const {getBanner, banner} = useBanner();
+  const {getPromo, promo} = usePromo();
+  const route = useRouter();
 
   return (
     <LayOut>
@@ -97,18 +69,18 @@ export default function Home({banner,promos,category,activity}) {
 
       <section>
         <div className="my-5">
-          <div className="container px-4" data-aos="fade-down-right">
+          <div className="container px-4 pb-4" data-aos="fade-down-right">
               <h5 className="text-primary italic">Destinasi terkenal</h5>
               <h2 className="text-start fw-bold"><i class='bx bxs-plane-alt'></i> Destinasi Yang Paling Populer</h2>
             </div>
-            <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%"}}>
+            <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%",alignItems:"flex-start", justifyContent:"flex-start"}}>
             {banner.map((bann)=>(
-              <div className="card" style={{width:"16rem"}}>
+                <div className="card" style={{width:"16rem"}}>
                   <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
                   <div className="cardText">
                     <h5 className="card-title">{bann.name}</h5>
                   </div>
-              </div>
+                </div>
             ))}
             </div>
         </div>
@@ -116,9 +88,14 @@ export default function Home({banner,promos,category,activity}) {
 
       <section>
           <div className="my-5">
-              <div className="container px-4 text-end">
-                <h5 className="text-primary italic">Promo saat ini</h5>
-                <h2 className="fw-bold">Promo yang paling diminati <i class='bx bxs-purchase-tag-alt'></i></h2>
+              <div className="d-flex container px-4">
+                <div className="container" style={{paddingTop:"40px"}}>
+                  <button className="btn btn-primary" onClick={() => route.push("promo")}>More Detail</button>
+                </div>
+                <div className="container text-end">
+                  <h5 className="text-primary italic">Promo saat ini</h5>
+                  <h2 className="fw-bold">Promo yang paling diminati <i class='bx bxs-purchase-tag-alt'></i></h2>
+                </div>
               </div>
               <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
                 <Swiper
@@ -128,44 +105,14 @@ export default function Home({banner,promos,category,activity}) {
                   navigation={true}
                   virtual
                 >
-                  {promos.map((prom) => (
+                  {promo.map((prom) => (
                     <SwiperSlide>
-                      <img src={prom.imageUrl} className="card-img"/>
+                      <button className="btn" onClick={()=>route.push(`/detail/${prom.id}`)}>
+                        <img src={prom.imageUrl} style={{height:"24rem"}}/>
+                      </button>
                     </SwiperSlide>
                   ))}
                 </Swiper>
-              </div>
-          </div>
-      </section>
-      
-      <section>
-          <div className="my-5">
-              <div className="container px-4">
-                <h5 className="text-primary italic">Categories lokasi</h5>
-                <h2 className="text-start fw-bold"><i class='bx bxs-category'></i> Categories berdasarkan negara</h2>
-              </div>
-              <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
-                {category.map((cat)=>(
-                    <div>
-                      <img src={cat.imageUrl} className="card-img" style={{height:"11rem"}}/>
-                    </div>
-                  ))}
-              </div>
-          </div>
-      </section>
-
-      <section>
-          <div className="my-5">
-              <div className="container px-4 text-end">
-                <h5 className="text-primary italic">Activities yang tersedia</h5>
-                <h2 className="fw-bold">Activities yang bisa dikunjungi <i class='bx bxs-calendar'></i></h2>
-              </div>
-              <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
-                {activity.map((acti)=>(
-                    <div>
-                      <img src={acti.imageUrls} className="card-img" style={{height:"11rem"}}/>
-                    </div>
-                  ))}
               </div>
           </div>
       </section>

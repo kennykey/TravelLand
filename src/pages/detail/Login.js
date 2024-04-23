@@ -1,13 +1,52 @@
-import NavDash from "@/component/NavDash";
-
+import { Container,Form,Button } from "react-bootstrap"
+import useAuth from "@/useApi/useAuth";
+import React ,{ useState } from "react"
+import LayOut from "@/component/LayOut";
 
 export default function Login(){
+    const {Auth,loading} = useAuth();
+
+    const handleLogin = async (e) =>{
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        Auth(
+            'login',
+            {email,password}
+        );    
+    };
+
+    if(loading){
+        return(
+            <h2 className="text-center fw-bold">
+                Loading...
+            </h2>
+        )
+    }
+
     return ( 
-        <NavDash>
-            <div className="bg-body-tertiary tengah w-100">
-                <h1>Login</h1>
-            </div>
-        </NavDash>
+        <LayOut>
+            <Container className="d-flex m-5 tengah">
+                <Container>
+                    <img src="/sign_in.png" alt="Sign_in" className="img-fluid"/>
+                </Container>
+                <Container className="m-5">
+                    <Form onSubmit={handleLogin} style={{width:"400px"}}>
+                        <h4 className="text-center fw-bold mb-3">Login</h4>
+                        <Form.Group className="mb-3"  controlId="formBasicEmail">
+                            <Form.Control type="email" placeholder="Enter Email" name="email"/>
+                        </Form.Group>
+                        <Form.Group className="mb-3"  controlId="formBasicPassword">
+                            <Form.Control type="password" placeholder="Enter Password" name="password"/>
+                        </Form.Group>
+                        <Button variant="primary" type="submit" className="w-100">
+                            Submit
+                        </Button>
+                    </Form>
+                </Container>
+            </Container>
+        </LayOut>
      );
 }
  

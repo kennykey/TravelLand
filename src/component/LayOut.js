@@ -8,5 +8,5 @@ export default function LayOut ({children}){
             {children}
             <Footer/>
         </div>
-    );
+    )
 }

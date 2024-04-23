@@ -58,6 +58,12 @@
   text-align: center;
 }
 
+.wrap{
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .dash{
   border-radius: 100px;
   height: 500px;
@@ -103,7 +109,15 @@ body {
 }
 
 /* home css*/
-  
+
+/* promo page */
+.swiper-slide img {
+  height: 25rem;
+  object-fit: fill;
+}
+/* promo page */
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
