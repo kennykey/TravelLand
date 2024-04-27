@@ -13,16 +13,16 @@ export default function Category(){
         getCategories();
     }, [])
 
-    const handleDelete = async (id) =>{
-        try{
-            const resp = await deleteData(`delete-category/${id}`);
-        if (resp.status === 200) {
-            window.location.reload();
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const handleDelete = async (id) =>{
+    //     try{
+    //         const resp = await deleteData(`delete-category/${id}`);
+    //     if (resp.status === 200) {
+    //         window.location.reload();
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     return(
         <NavDash>
@@ -38,7 +38,8 @@ export default function Category(){
                                 <h6 className="fw-bold pt-3">{catego.name}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
                                     <button className="btn btn-success" onClick={()=>route.push(`/form/category/${catego.id}`)}>Update</button>
-                                    <button className="btn btn-danger" onClick={handleDelete(catego.id)}>Delete</button>
+                                    {/* <button className="btn btn-danger" onClick={handleDelete(catego.id)}>Delete</button> */}
+                                    <button className="btn btn-danger">Delete</button>
                                 </div>
                             </div>
                         </div>

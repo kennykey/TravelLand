@@ -28,7 +28,9 @@ export default function promo(){
                         categories.map((res)=>(
                         <SwiperSlide>
                         <div>
-                            <img src={res.imageUrl} alt={res.name}/>
+                            <button onClick={()=> route.push(`/detail/category/${res.id}`)} style={{width:"100%"}}>
+                                <img src={res.imageUrl} alt={res.name}/>
+                            </button>
                         </div>
                         </SwiperSlide>
                         ))
@@ -38,9 +40,9 @@ export default function promo(){
 
             <div className="container px-4 tengah wrap gap-3 my-5">
                 {promo.length > 0 && (
-                    promo.map((res)=>(
-                        <button>
-                            <img src={res.imageUrl} alt={res.title} style={{width:"16rem", height:"14rem"}}/>
+                    promo.map((resp)=>(
+                        <button onClick={()=>route.push(`/detail/promo/${resp.id}`)}>
+                            <img src={resp.imageUrl} alt={resp.title} style={{width:"19rem", height:"14rem"}}/>
                         </button>
                     ))
                 )}

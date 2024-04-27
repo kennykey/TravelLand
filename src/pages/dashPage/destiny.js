@@ -12,16 +12,16 @@ export default function Destiny(){
         getBanner();
     }, [])
 
-    const handleDelete = async (id) =>{
-        try{
-            const resp = await deleteData(`delete-banner/${id}`);
-        if (resp.status === 200) {
-            window.location.reload();
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const handleDelete = async (id) =>{
+    //     try{
+    //         const resp = await deleteData(`delete-banner/${id}`);
+    //     if (resp.status === 200) {
+    //         window.location.reload();
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     return(
         <NavDash>
@@ -37,7 +37,8 @@ export default function Destiny(){
                                 <h6 className="fw-bold pt-3">{bannered.name}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
                                     <button className="btn btn-success" onClick={()=>route.push(`/form/banner/${bannered.id}`)}>Update</button>
-                                    <button className="btn btn-danger" onClick={handleDelete(bannered.id)}>Delete</button>
+                                    {/* <button className="btn btn-danger" onClick={handleDelete(bannered.id)}>Delete</button> */}
+                                    <button className="btn btn-danger">Delete</button>
                                 </div>
                             </div>
                         </div>

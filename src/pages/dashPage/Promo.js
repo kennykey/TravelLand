@@ -13,16 +13,16 @@ import { useEffect } from "react";
         getPromo();
     }, [])
 
-    const handleDelete = async (id) =>{
-        try{
-            const resp = await deleteData(`delete-promo/${id}`);
-        if (resp.status === 200) {
-            window.location.reload();
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const handleDelete = async (id) =>{
+    //     try{
+    //         const resp = await deleteData(`delete-promo/${id}`);
+    //     if (resp.status === 200) {
+    //         window.location.reload();
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     return(
         <NavDash>
@@ -38,7 +38,8 @@ import { useEffect } from "react";
                                 <h6 className="fw-bold pt-3">{promon.title}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
                                     <button className="btn btn-success" onClick={()=>route.push(`/form/promo/${promon.id}`)}>Update</button>
-                                    <button className="btn btn-danger" onClick={handleDelete(promon.id)}>Delete</button>
+                                    {/* <button className="btn btn-danger" onClick={handleDelete(promon.id)}>Delete</button> */}
+                                    <button className="btn btn-danger">Delete</button>
                                 </div>
                             </div>
                         </div>

@@ -117,6 +117,18 @@ body {
 }
 /* promo page */
 
+/* image detail/ */
+.img-detail{
+  width: 500px;
+  height: 500px;
+}
+
+.tengah-detail{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+/* image detail/ */
 
 @layer utilities {
   .text-balance {

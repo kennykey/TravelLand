@@ -75,12 +75,14 @@ export default function Home() {
             </div>
             <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%",alignItems:"flex-start", justifyContent:"flex-start"}}>
             {banner.map((bann)=>(
-                <div className="card" style={{width:"16rem"}}>
-                  <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
-                  <div className="cardText">
-                    <h5 className="card-title">{bann.name}</h5>
-                  </div>
-                </div>
+                <button onClick={()=>route.push(`/detail/banner/${bann.id}`)}>
+                    <div className="card" style={{width:"16rem"}}>
+                      <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
+                      <div className="cardText">
+                        <h5 className="card-title">{bann.name}</h5>
+                      </div>
+                    </div>
+                </button>
             ))}
             </div>
         </div>
@@ -107,7 +109,7 @@ export default function Home() {
                 >
                   {promo.map((prom) => (
                     <SwiperSlide>
-                      <button className="btn" onClick={()=>route.push(`/detail/${prom.id}`)}>
+                      <button className="btn" onClick={()=>route.push(`/detail/promo/${prom.id}`)}>
                         <img src={prom.imageUrl} style={{height:"24rem"}}/>
                       </button>
                     </SwiperSlide>
