@@ -1,15 +1,29 @@
 import NavDash from "@/component/NavDash";
 import usePromo from "@/useApi/usePromo"
+import useDelete from "@/useApi/useDelete"
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
  export default function Promo(){
+    const {deleteData} = useDelete()
     const {getPromo , loading, promo} = usePromo();
     const route = useRouter();
 
     useEffect(()=>{
         getPromo();
     }, [])
+
+    const handleDelete = async (id) =>{
+        try{
+            const resp = await deleteData(`delete-promo/${id}`);
+        if (resp.status === 200) {
+            window.location.reload();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return(
         <NavDash>
             <div className="container px-4 tengah wrap gap-3 my-5">
@@ -23,8 +37,8 @@ import { useEffect } from "react";
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{promon.title}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
-                                    <button className="btn btn-success">Update</button>
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-success" onClick={()=>route.push(`/form/promo/${promon.id}`)}>Update</button>
+                                    <button className="btn btn-danger" onClick={handleDelete(promon.id)}>Delete</button>
                                 </div>
                             </div>
                         </div>

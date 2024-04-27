@@ -2,9 +2,12 @@ import { Container,Form,Button } from "react-bootstrap"
 import useAuth from "@/useApi/useAuth";
 import React ,{ useState } from "react"
 import LayOut from "@/component/LayOut";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Login(){
     const {Auth,loading} = useAuth();
+    const {login} = useSelector((state)=>state.auth);
+    const dispatch = useDispatch();
 
     const handleLogin = async (e) =>{
         e.preventDefault();
@@ -14,7 +17,10 @@ export default function Login(){
         Auth(
             'login',
             {email,password}
-        );    
+        );
+             
+        if(!email && !password) return
+        dispatch(Login(email,password));
     };
 
     if(loading){
@@ -24,7 +30,7 @@ export default function Login(){
             </h2>
         )
     }
-
+    console.log(login);
     return ( 
         <LayOut>
             <Container className="d-flex m-5 tengah">

@@ -58,8 +58,8 @@ export default function Register() {
             <Form.Group className="mb-3" controlId="formBasicrole">
               <Form.Label>role</Form.Label>
               <Form.Select name="role">
-                <option>user</option>
-                <option>admin</option>
+                <option role="user">user</option>
+                <option role="admin">admin</option>
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicprofilePictureUrl">

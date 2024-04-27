@@ -1,16 +1,29 @@
 import NavDash from "@/component/NavDash";
 import useCategories from "@/useApi/useCategories";
+import useDelete from "@/useApi/useDelete"
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function Category(){
+    const {deleteData} = useDelete();
     const {getCategories,loading,categories} = useCategories();
     const route = useRouter();
     
     useEffect(()=>{
         getCategories();
     }, [])
-    
+
+    const handleDelete = async (id) =>{
+        try{
+            const resp = await deleteData(`delete-category/${id}`);
+        if (resp.status === 200) {
+            window.location.reload();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return(
         <NavDash>
             <div className="container px-4 tengah wrap gap-3 my-5">
@@ -24,8 +37,8 @@ export default function Category(){
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{catego.name}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
-                                    <button className="btn btn-success">Update</button>
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-success" onClick={()=>route.push(`/form/category/${catego.id}`)}>Update</button>
+                                    <button className="btn btn-danger" onClick={handleDelete(catego.id)}>Delete</button>
                                 </div>
                             </div>
                         </div>

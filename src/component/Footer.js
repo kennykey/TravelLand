@@ -10,10 +10,10 @@ export default function Footer(){
                     <p className="pe-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam iure nisi quam dolor 
                     iste quibusdam itaque maxime amet quia, dolorem odit tenetur expedita harum. Repudiandae odit ratione non 
                     consequuntur modi. <span className="text-primary">Baca Selengkapnya</span></p>
-                    <p><i class='bx bx-phone-call'></i> 0852 1122 3344</p>
-                    <p><i class='bx bx-envelope'></i> wJg2h@example.com</p>
-                    <p><i class='bx bx-location-plus'> jakarta, indonesia</i></p>
-                    <p><i class='bx bx-printer'></i> +62 123 456</p>
+                    <p><i className='bx bx-phone-call'></i> 0852 1122 3344</p>
+                    <p><i className='bx bx-envelope'></i> wJg2h@example.com</p>
+                    <p><i className='bx bx-location-plus'> jakarta, indonesia</i></p>
+                    <p><i className='bx bx-printer'></i> +62 123 456</p>
                 </div>
                 <div className="col-md-2">
                     <h5 className="text-black">Tentang</h5>

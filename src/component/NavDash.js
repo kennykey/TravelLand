@@ -13,10 +13,10 @@ export default function NavDash({children}) {
         <div>
             <div>
             <Navbar className="px-3" style={{borderBottom:"2px solid #3333"}}>
-                <button onClick={showMenu}><Navbar.Brand><i class='bx bxs-grid-alt'></i> Travel<span style={{color:"#0d6efd"}}>Land</span></Navbar.Brand></button>
+                <button onClick={showMenu}><Navbar.Brand><i className='bx bxs-grid-alt'></i> Travel<span style={{color:"#0d6efd"}}>Land</span></Navbar.Brand></button>
                 <Nav className="ms-auto">
-                    <Nav.Link><i class='bx bxs-home'></i>Home</Nav.Link>
-                    <Nav.Link><i class='bx bx-log-out fs-3'></i></Nav.Link>
+                    <Nav.Link><i className='bx bxs-home'></i>Home</Nav.Link>
+                    <Nav.Link><i className='bx bx-log-out fs-3'></i></Nav.Link>
                 </Nav>
             </Navbar>
             </div>

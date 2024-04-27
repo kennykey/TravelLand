@@ -19,5 +19,6 @@ export default function useBanner(){
             console.log(error);
         }
     }
-    return {getBanner,loading,banner};
+
+    return {getBanner, loading, banner};
 }

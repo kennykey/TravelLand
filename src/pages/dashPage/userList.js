@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 
 export default function userList(){
-    const {getUser, loading, user} = useUser(false);
+    const {getUser, user} = useUser(false);
     const route = useRouter();
     useEffect(()=>{
         getUser(true);
@@ -17,7 +17,7 @@ export default function userList(){
                 <div className="text-end my-3" style={{width:"97%"}}>
                     <button className="btn btn-primary">Add</button>
                 </div>
-                <center>
+                <div className="text-center">
                 <table className="table table-bordered" style={{width:"80%"}}>
                     <thead>
                         <tr>
@@ -39,9 +39,8 @@ export default function userList(){
                                 <td>{userData.email}</td>
                                 <td>{userData.phoneNumber}</td>
                                 <td>
-                                    <div className="d-flex gap-3">
+                                    <div className="d-flex">
                                         <button className="btn btn-success">Update</button>
-                                        <button className="btn btn-danger">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -49,7 +48,7 @@ export default function userList(){
                         )}
                     </tbody>
                 </table>
-                </center>
+                </div>
             </div>
         </NavDash>
     )
