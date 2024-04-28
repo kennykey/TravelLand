@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function useGetData() {
-    const [detail,setDetial] = useState([]);
+    const [detail,setDetail] = useState([]);
     const getData = async (url) => {
         try {
             const resp = await axios.get(
@@ -12,10 +12,10 @@ export default function useGetData() {
                         apiKey: "24405e01-fbc1-45a5-9f5a-be13afcd757c",
                     },
                 });
-                setDetial(resp.data.data)
+                setDetail(resp.data.data)
         } catch (error) {
             console.log(error);
         }
     };
-    return { getData,setDetial };
+    return { getData,setDetail };
 }

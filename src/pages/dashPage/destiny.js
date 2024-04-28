@@ -12,16 +12,16 @@ export default function Destiny(){
         getBanner();
     }, [])
 
-    // const handleDelete = async (id) =>{
-    //     try{
-    //         const resp = await deleteData(`delete-banner/${id}`);
-    //     if (resp.status === 200) {
-    //         window.location.reload();
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const handleDelete = async (id) =>{
+        try{
+            const resp = await deleteData(`delete-banner/${id}`);
+        if (resp.status === 200) {
+            window.location.reload();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return(
         <NavDash>

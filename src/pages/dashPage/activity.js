@@ -13,16 +13,16 @@ export default function Activity(){
         getActivities();
     }, [])
 
-    // const handleDelete = async (id) =>{
-    //     try{
-    //         const resp = await deleteData(`delete-activity/${id}`);
-    //     if (resp.status === 200) {
-    //         window.location.reload();
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const handleDelete = async (id) =>{
+        try{
+            const resp = await deleteData(`delete-activity/${id}`);
+        if (resp.status === 200) {
+            window.location.reload();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return(
         <NavDash>
