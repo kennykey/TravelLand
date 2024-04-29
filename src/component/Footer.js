@@ -6,7 +6,7 @@ export default function Footer(){
         <div className="container mt-5" data-aos="fade-up">
             <div className="row d-flex text-muted">
                 <div className="col-md-6">
-                    <h4 className="text-black">Travel<span style={{color:"#0d6efd"}}>Land</span></h4>
+                    <h5 className="text-black fs-4">Travel<span style={{color:"#0d6efd"}}>Land</span></h5>
                     <p className="pe-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam iure nisi quam dolor 
                     iste quibusdam itaque maxime amet quia, dolorem odit tenetur expedita harum. Repudiandae odit ratione non 
                     consequuntur modi. <span className="text-primary">Baca Selengkapnya</span></p>

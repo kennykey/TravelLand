@@ -42,7 +42,7 @@ export default function promo(){
                 {promo.length > 0 && (
                     promo.map((resp)=>(
                         <button onClick={()=>route.push(`/detail/promo/${resp.id}`)}>
-                            <img src={resp.imageUrl} alt={resp.title} style={{width:"19rem", height:"14rem"}}/>
+                            <img src={resp.imageUrl} alt={resp.title} style={{width:"16rem", height:"14rem"}}/>
                         </button>
                     ))
                 )}

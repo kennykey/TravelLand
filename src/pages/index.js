@@ -70,12 +70,12 @@ export default function Home() {
       <section>
         <div className="my-5">
           <div className="container px-4 pb-4" data-aos="fade-down-right">
-              <h5 className="text-primary italic">Destinasi terkenal</h5>
-              <h2 className="text-start fw-bold"><i class='bx bxs-plane-alt'></i> Destinasi Yang Paling Populer</h2>
+              <h5 className="text-primary">Destinasi terkenal</h5>
+              <h5 className="text-start fw-bold fs-2"><i class='bx bxs-plane-alt'></i> Destinasi Yang Paling Populer</h5>
             </div>
             <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%",alignItems:"flex-start", justifyContent:"flex-start"}}>
             {banner.map((bann)=>(
-                <button onClick={()=>route.push(`/detail/banner/${bann.id}`)}>
+                <button aria-label={bann.name} onClick={()=>route.push(`/detail/banner/${bann.id}`)}>
                     <div className="card" style={{width:"16rem"}}>
                       <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
                       <div className="cardText">
@@ -95,7 +95,7 @@ export default function Home() {
                   <button className="btn btn-primary" onClick={() => route.push("promo")}>More Detail</button>
                 </div>
                 <div className="container text-end">
-                  <h5 className="text-primary italic">Promo saat ini</h5>
+                  <h5 className="text-primary">Promo saat ini</h5>
                   <h2 className="fw-bold">Promo yang paling diminati <i class='bx bxs-purchase-tag-alt'></i></h2>
                 </div>
               </div>
@@ -109,8 +109,8 @@ export default function Home() {
                 >
                   {promo.map((prom) => (
                     <SwiperSlide>
-                      <button className="btn" onClick={()=>route.push(`/detail/promo/${prom.id}`)}>
-                        <img src={prom.imageUrl} style={{height:"24rem"}}/>
+                      <button className="btn" aria-label={prom.title} onClick={()=>route.push(`/detail/promo/${prom.id}`)}>
+                        <img src={prom.imageUrl} alt={prom.title} style={{height:"24rem"}}/>
                       </button>
                     </SwiperSlide>
                   ))}

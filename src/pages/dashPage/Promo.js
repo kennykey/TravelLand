@@ -28,7 +28,7 @@ import { useEffect } from "react";
         <NavDash>
             <div className="container px-4 tengah wrap gap-3 my-5">
                 <div className="text-end my-3" style={{width:"94%"}}>
-                    <button className="btn btn-primary">Add</button>
+                    <button className="btn btn-primary" onClick={()=>route.push('/form/promo/addPromo')}>Add</button>
                 </div>
                 {promo.length>0 &&(
                     promo.map((promon)=>(

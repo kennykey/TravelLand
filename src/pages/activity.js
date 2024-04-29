@@ -16,7 +16,7 @@ export default function activity(){
                     activities.map((res)=>(
                         <div>
                             <button onClick={()=>route.push(`/detail/activity/${res.id}`)}>
-                                <img src={res.imageUrls[0] || res.imageUrls[1]} alt={res.title} style={{height:"17rem", width:"18rem"}}/>
+                                <img src={res.imageUrls[0] || res.imageUrls[1]} alt={res.title} style={{height:"14rem", width:"16rem"}}/>
                                 <div>
                                     <h6>{res.title}</h6>
                                 </div>

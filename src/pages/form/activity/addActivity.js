@@ -62,6 +62,7 @@ export default function addActivity(){
             <Container className="d-flex m-5 tengah">
                 <Form  onSubmit={handleUpload} style={{width:"400px"}}>
                     <p>{promp}</p>
+                    <img src={activityImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
                     <Form.Group className="mb-3" controlId="formCategoryID">
                         <Form.Control type="text" placeholder="Enter categoryID activity" name="categoryID"/>
                     </Form.Group>

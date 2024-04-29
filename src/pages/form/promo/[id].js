@@ -62,6 +62,7 @@ export default function updatePromo(){
             <Container className="d-flex m-5 tengah">
                 <Form  onSubmit={handleUpload} style={{width:"400px"}}>
                     <p>{promp}</p>
+                    <img src={promoImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
                     <Form.Group className="mb-3" controlId="formName">
                         <Form.Control type="text" placeholder="Enter title promo " name="title"/>
                     </Form.Group>

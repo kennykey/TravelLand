@@ -51,7 +51,7 @@ export default function createCategory(){
             <Container className="d-flex m-5 tengah">
                 <Form  onSubmit={handleUpload} style={{width:"400px"}}>
                     <p>{promp}</p>
-                    <img src={bannerImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
+                    <img src={categoryImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
                     <Form.Group className="mb-3" controlId="formName">
                         <Form.Control type="text" placeholder="Enter name category" name="name"/>
                     </Form.Group>

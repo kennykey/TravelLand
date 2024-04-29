@@ -28,7 +28,7 @@ export default function Activity(){
         <NavDash>
             <div className="container px-4 tengah wrap gap-3 my-5">
                 <div className="text-end my-3" style={{width:"94%"}}>
-                    <button className="btn btn-primary">Add</button>
+                    <button className="btn btn-primary" onClick={()=>route.push('/form/activity/addActivity')}>Add</button>
                 </div>
                 {activities.length>0 &&(
                     activities.map((activi)=>(
