@@ -33,7 +33,7 @@ export default function Activity(){
                 </div>
                 {activities.length>0 &&(
                     activities.map((activi)=>(
-                        <div>
+                        <div key={activi.id}>
                             <img src={activi.imageUrls} alt={activi.title} style={{height:"14rem", width:"14rem"}}/>
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{activi.title}</h6>

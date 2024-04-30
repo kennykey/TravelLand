@@ -32,7 +32,7 @@ export default function userList(){
                     <tbody>
                         {user.length > 0 && (
                             user.map((userData)=>(
-                            <tr>
+                            <tr key={userData.id}>
                                 <td><img src={userData.profilePictureUrl} alt={userData.name} style={{height:"50px", width:"50px", borderRadius:"50%"}}/></td>
                                 <td>{userData.name}</td>
                                 <td>{userData.role}</td>

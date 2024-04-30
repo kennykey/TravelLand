@@ -33,7 +33,7 @@ export default function Category(){
                 </div>
                 {categories.length>0 &&(
                     categories.map((catego)=>(
-                        <div>
+                        <div key={catego.id}>
                             <img src={catego.imageUrl} alt={catego.name} style={{height:"14rem", width:"14rem"}}/>
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{catego.name}</h6>

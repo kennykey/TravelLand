@@ -33,7 +33,7 @@ import useGetData from "@/useApi/useGetData";
                 </div>
                 {promo.length>0 &&(
                     promo.map((promon)=>(
-                        <div>
+                        <div key={promon.id}>
                             <img src={promon.imageUrl} alt={promon.title} style={{height:"14rem", width:"14rem"}}/>
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{promon.title}</h6>

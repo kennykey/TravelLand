@@ -32,7 +32,7 @@ export default function Destiny(){
                 </div>
                 {banner.length>0 &&(
                     banner.map((bannered)=>(
-                        <div>
+                        <div key={bannered.id}>
                             <img src={bannered.imageUrl} alt={bannered.name} style={{height:"14rem", width:"14rem"}}/>
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{bannered.name}</h6>

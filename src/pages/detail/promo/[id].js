@@ -14,7 +14,7 @@ export default function promoDetail(){
 
     return(
         <LayOut>
-            <div className=" container mx-auto tengah-detail gap-5 border border-dark p-5 m-5" style={{width:"40%"}}>
+            <div key={detail.id} className=" container mx-auto tengah-detail gap-5 border border-dark p-5 m-5" style={{width:"40%"}}>
                 <img src={detail.imageUrl} alt={detail.name} className="img-detail mx-auto"/>
                 <div className="ps-4 text-start">
                     <p>Name: {detail.title}</p>

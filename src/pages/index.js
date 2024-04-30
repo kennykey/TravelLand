@@ -5,7 +5,6 @@ import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper,SwiperSlide } from "swiper/react";
 import BannerPage from "@/component/Fragment/BannerPage";
 import PromoPage from "@/component/Fragment/PromoPage";
-import Image from "next/image";
 
 export default function Home() {
   const route = useRouter();
