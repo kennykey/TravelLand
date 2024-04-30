@@ -35,9 +35,11 @@ export default function PromoPage(){
                 >
                   {promo.map((prom) => (
                     <SwiperSlide>
-                      <button className="btn" aria-label={prom.title} onClick={()=>route.push(`/detail/promo/${prom.id}`)}>
-                        <img src={prom.imageUrl} alt={prom.title} style={{height:"24rem"}}/>
-                      </button>
+                      <div key={prom.id}>
+                        <button className="btn" aria-label={prom.title} onClick={()=>route.push(`/detail/promo/${prom.id}`)}>
+                          <img src={prom.imageUrl} alt={prom.title} style={{height:"24rem"}}/>
+                        </button>
+                      </div>
                     </SwiperSlide>
                   ))}
                 </Swiper>

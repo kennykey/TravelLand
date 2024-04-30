@@ -21,7 +21,7 @@ export default function BannerPage(){
             </div>
             <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%",alignItems:"flex-start", justifyContent:"flex-start"}}>
             {banner.map((bann)=>(
-                <button aria-label={bann.name} onClick={()=>route.push(`/detail/banner/${bann.id}`)}>
+                <button key={bann.id} aria-label={bann.name} onClick={()=>route.push(`/detail/banner/${bann.id}`)}>
                     <div className="card" style={{width:"16rem"}}>
                       <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
                       <div className="cardText">

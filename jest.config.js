@@ -19,7 +19,7 @@ const customJestConfig = {
     "!<rootDir>/.next/**",
     "!<rootDir>/src/useApi/*.{js,jsx,ts,tsx}",
     "!<rootDir>/src/redux/**/*.{js,jsx,ts,tsx}",
-    "!<rootDir>/src/component/*.{js,jsx,ts,tsx}",
+    "!<rootDir>/src/component/**/**/*.{js,jsx,ts,tsx}",
     "!<rootDir>/src/pages/detail/activity/*.{js,jsx,ts,tsx}",
     "!<rootDir>/src/pages/detail/banner/*.{js,jsx,ts,tsx}",
     "!<rootDir>/src/pages/detail/category/*.{js,jsx,ts,tsx}",

@@ -1,12 +1,10 @@
-import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-
+import { useState } from "react";
 
 export default function useAuth(){
     const [loading,setLoading] = useState(false);
     const route = useRouter();
-
 
     const Auth = async(url,option)=>{
         setLoading(true);

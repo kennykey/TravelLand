@@ -26,7 +26,7 @@ export default function CategoryPage(){
                     {categories.length > 0 && (
                         categories.map((res)=>(
                         <SwiperSlide>
-                        <div>
+                        <div key={res.id}>
                             <button onClick={()=> route.push(`/detail/category/${res.id}`)} style={{width:"100%"}}>
                                 <img src={res.imageUrl} alt={res.name}/>
                             </button>

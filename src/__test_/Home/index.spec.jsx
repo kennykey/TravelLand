@@ -5,7 +5,7 @@ import Home from '@/pages';
 describe('home page', () => {
   it('should handle render homepage', () => {
     const { container } = render(<Home />);
-    expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
 });

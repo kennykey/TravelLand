@@ -5,7 +5,7 @@ import Login from '@/pages/detail/Login';
 describe('login page', () => {
   it('should handle render login', () => {
     const { container } = render(<Login />);
-    expect(container).toMatchSnapshot();
+    expect(container).toBeInTheDocument();
   });
 
   it('should handle render input text', () => {

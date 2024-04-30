@@ -17,7 +17,7 @@ export default function ActivityPage(){
             <div className="container px-4 tengah wrap gap-3 my-5">
                 {detail.length > 0 && (
                     detail.map((res)=>(
-                        <div>
+                        <div key={res.id}>
                             <button onClick={()=>route.push(`/detail/activity/${res.id}`)}>
                                 <img src={res.imageUrls[0] || res.imageUrls[1]} alt={res.title} style={{height:"14rem", width:"16rem"}}/>
                                 <div>
