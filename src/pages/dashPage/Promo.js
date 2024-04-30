@@ -1,16 +1,17 @@
 import NavDash from "@/component/NavDash";
-import usePromo from "@/useApi/usePromo"
 import useDelete from "@/useApi/useDelete"
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+import useGetData from "@/useApi/useGetData";
 
  export default function Promo(){
-    const {deleteData} = useDelete()
-    const {getPromo , loading, promo} = usePromo();
+    const {deleteData} = useDelete();
+    const {getData} = useGetData();
+    const [promo,setPromo] = useState([]);
     const route = useRouter();
 
     useEffect(()=>{
-        getPromo();
+        getData(`promos`).then((res)=>setPromo(res.data.data));
     }, [])
 
     const handleDelete = async (id) =>{

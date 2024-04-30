@@ -1,21 +1,16 @@
 import LayOut from "@/component/LayOut";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import useGetData from "@/useApi/useGetData";
 
 export default function categoryDetail(){
-    const [detail, setDetail] = useState({});
+    const [detail, setDetail] = useState([]);
     const route = useRouter();
+    const {getData} = useGetData();
 
     useEffect(()=>{
-        const getCategory = async ()=>{
-            const resp = await axios.get(`https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/category/${route.query.id}`,{
-                headers: {apiKey: "24405e01-fbc1-45a5-9f5a-be13afcd757c"},
-            }); 
-            setDetail(resp?.data?.data);
-            }
-            if (route.query.id) getCategory();
-    }, [route.query.id]);
+        getData(`category/${route.query.id}`).then((res)=>setDetail(res.data.data));
+    }, [])
 
     return(
         <LayOut>

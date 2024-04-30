@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 export default function useAuth(){
     const [loading,setLoading] = useState(false);
     const route = useRouter();
-    const [accountUser, setAccount] = useState([]);
+
 
     const Auth = async(url,option)=>{
         setLoading(true);
@@ -36,11 +36,11 @@ export default function useAuth(){
                         apiKey:"24405e01-fbc1-45a5-9f5a-be13afcd757c",
                     },
                 });
-                accountUser(resp.data.data)
+                return resp;
         }catch(error){
             console.log(error);
         }
     }
 
-    return {Auth, account, loading, accountUser};
+    return {Auth, account, loading};
 }

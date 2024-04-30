@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function useGetData() {
-    const [detail,setDetail] = useState([]);
     const getData = async (url) => {
         try {
             const resp = await axios.get(
@@ -12,10 +11,10 @@ export default function useGetData() {
                         apiKey: "24405e01-fbc1-45a5-9f5a-be13afcd757c",
                     },
                 });
-                setDetail(resp.data.data)
+            return resp;
         } catch (error) {
             console.log(error);
         }
     };
-    return { getData,setDetail };
+    return { getData};
 }

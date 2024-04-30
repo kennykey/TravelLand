@@ -1,22 +1,12 @@
 "use client"
-import AOS from "aos";
 import LayOut from "../component/LayOut";
-import { useEffect } from "react";
-import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRouter } from "next/router";
-import useBanner from "@/useApi/useBanner";
-import usePromo from "@/useApi/usePromo";
+import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Swiper,SwiperSlide } from "swiper/react";
+import BannerPage from "@/component/Fragment/BannerPage";
+import PromoPage from "@/component/Fragment/PromoPage";
 
 export default function Home() {
-  useEffect(() => {
-    AOS.init({});
-    getBanner();
-    getPromo()
-  }, []);
-
-  const {getBanner, banner} = useBanner();
-  const {getPromo, promo} = usePromo();
   const route = useRouter();
 
   return (
@@ -28,8 +18,8 @@ export default function Home() {
               <h1 className="fw-bold">Choose <span style={{color:"#0d6efd"}}>Travel And Books</span> Your Hotel With Us</h1>
               <p className="text-muted">Lorem ipsum dolor sit amet consectetur. Hac consequat hac arcu sed. Lectus ante ut in mattis ornare commodo nisi. Tortor tincidunt fames quam fusce convallis eget pulvinar.</p>
               <div className="d-flex gap-3">
-                  <button className="btn btn-primary">Pesan Sekarang</button>
-                  <button className="btn btn-outline-primary rounded-pill"><i class='bx bx-right-arrow' ></i> Lihat Detail</button>
+                  <button className="btn btn-primary" onClick={()=>route.push('/activity')}>pesan</button>
+                  <button className="btn btn-outline-primary rounded-pill"><i class='bx bx-right-arrow' ></i>Detail</button>
               </div>
           </div>
           <div className="container col-md-6 tengah" data-aos="fade-left" style={{width:"400px"}}>
@@ -67,58 +57,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        <div className="my-5">
-          <div className="container px-4 pb-4" data-aos="fade-down-right">
-              <h5 className="text-primary">Destinasi terkenal</h5>
-              <h5 className="text-start fw-bold fs-2"><i class='bx bxs-plane-alt'></i> Destinasi Yang Paling Populer</h5>
-            </div>
-            <div className="container-fluid gap-4 tengah" data-aos="flip-up" style={{flexWrap:"wrap", width:"90%",alignItems:"flex-start", justifyContent:"flex-start"}}>
-            {banner.map((bann)=>(
-                <button aria-label={bann.name} onClick={()=>route.push(`/detail/banner/${bann.id}`)}>
-                    <div className="card" style={{width:"16rem"}}>
-                      <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
-                      <div className="cardText">
-                        <h5 className="card-title">{bann.name}</h5>
-                      </div>
-                    </div>
-                </button>
-            ))}
-            </div>
-        </div>
-      </section>
-
-      <section>
-          <div className="my-5">
-              <div className="d-flex container px-4">
-                <div className="container" style={{paddingTop:"40px"}}>
-                  <button className="btn btn-primary" onClick={() => route.push("promo")}>More Detail</button>
-                </div>
-                <div className="container text-end">
-                  <h5 className="text-primary">Promo saat ini</h5>
-                  <h2 className="fw-bold">Promo yang paling diminati <i class='bx bxs-purchase-tag-alt'></i></h2>
-                </div>
-              </div>
-              <div className="container-fluid gap-4 tengah" style={{flexWrap:"wrap", width:"90%"}}>
-                <Swiper
-                  modules={[Virtual, Navigation, Pagination]}
-                  slidesPerView={3}
-                  spaceBetween={30}
-                  navigation={true}
-                  virtual
-                >
-                  {promo.map((prom) => (
-                    <SwiperSlide>
-                      <button className="btn" aria-label={prom.title} onClick={()=>route.push(`/detail/promo/${prom.id}`)}>
-                        <img src={prom.imageUrl} alt={prom.title} style={{height:"24rem"}}/>
-                      </button>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-          </div>
-      </section>
-
+      <BannerPage/>
+      
+      <PromoPage/>
       <hr className="solid-border mt-5"/>
     </LayOut>
   );

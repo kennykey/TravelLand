@@ -1,15 +1,16 @@
 import NavDash from "@/component/NavDash";
-import useBanner from "@/useApi/useBanner";
 import useDelete from "@/useApi/useDelete"
+import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Destiny(){
+    const [banner, setBanner] = useState([]);
     const {deleteData} = useDelete();
-    const {getBanner,loading,banner} = useBanner();
+    const {getData} = useGetData()
     const route = useRouter();
     useEffect(()=>{
-        getBanner();
+        getData(`banners`).then((res)=>setBanner(res.data.data));
     }, [])
 
     const handleDelete = async (id) =>{

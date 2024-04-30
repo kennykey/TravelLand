@@ -1,15 +1,15 @@
 import NavDash from "@/component/NavDash";
-import useUser from "@/useApi/useUser";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import useGetData from "@/useApi/useGetData";
+import { useEffect, useState } from "react";
 
 
 export default function userList(){
-    const {getUser, user} = useUser(false);
-    const route = useRouter();
+    const {getData} = useGetData();
+    const [user, setUser] = useState([]);
+
     useEffect(()=>{
-        getUser(true);
-    }, []);
+        getData(`all-user`).then((res)=>setUser(res.data.data));
+    }, [])
 
     return(
         <NavDash>

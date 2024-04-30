@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login page should handle render button not disable 1`] = `
+<div>
+  <button
+    text="button"
+    type="submit"
+  />
+</div>
+`;
+
+exports[`login page should handle render input text 1`] = `
+<div>
+  <input
+    label="email"
+    type="text"
+  />
+</div>
+`;
+
+exports[`login page should handle render input text 2`] = `
+<div>
+  <input
+    label="password"
+    type="text"
+  />
+</div>
+`;

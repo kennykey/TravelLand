@@ -1,16 +1,17 @@
 import NavDash from "@/component/NavDash";
-import useCategories from "@/useApi/useCategories";
 import useDelete from "@/useApi/useDelete"
+import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Category(){
+    const [categories, setCategory] = useState([])
     const {deleteData} = useDelete();
-    const {getCategories,loading,categories} = useCategories();
+    const {getData} = useGetData();
     const route = useRouter();
     
     useEffect(()=>{
-        getCategories();
+        getData(`categories`).then((res)=>setCategory(res.data.data));
     }, [])
 
     const handleDelete = async (id) =>{

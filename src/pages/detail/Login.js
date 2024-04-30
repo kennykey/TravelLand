@@ -41,10 +41,10 @@ export default function Login(){
                     <Form onSubmit={handleLogin} style={{width:"400px"}}>
                         <h4 className="text-center fw-bold mb-3">Login</h4>
                         <Form.Group className="mb-3"  controlId="formBasicEmail">
-                            <Form.Control type="email" placeholder="Enter Email" name="email"/>
+                            <Form.Control type="email" placeholder="Enter Email" name="email" id="email"/>
                         </Form.Group>
                         <Form.Group className="mb-3"  controlId="formBasicPassword">
-                            <Form.Control type="password" placeholder="Enter Password" name="password"/>
+                            <Form.Control type="password" placeholder="Enter Password" name="password" id="password"/>
                         </Form.Group>
                         <Button variant="primary" type="submit" className="w-100">
                             Submit

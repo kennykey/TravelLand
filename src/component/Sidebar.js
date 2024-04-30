@@ -5,10 +5,6 @@ export default function Sidebar(){
     return ( 
         <div className="sidebar me-5    " style={{borderRight:"2px solid #3333", width:"200px"}}>
             <div className="list-group list-group-flush">
-                <a className="list-group-item list-group-item-action py-2 my-1" onClick={() => route.push("/")}>
-                    <i className='bx bx-home-alt-2 fs-5'></i>
-                    <span className="ms-1 fs-5">Home</span>
-                </a>
                 <a className="list-group-item list-group-item-action py-2 my-1" onClick={()=>route.push("/dashPage/userList")}>
                     <i className='bx bxs-user fs-5'></i>
                     <span className="fs-5">UserList</span>

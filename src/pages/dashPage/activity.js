@@ -1,16 +1,17 @@
 import NavDash from "@/component/NavDash";
-import useActivities from "@/useApi/useActivities";
 import useDelete from "@/useApi/useDelete"
+import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function Activity(){
+    const [activities,setActivtities] = useState([])
     const {deleteData} = useDelete();
-    const { getActivities, loading, activities } = useActivities();
+    const {getData} = useGetData();
     const route = useRouter();
     useEffect(()=>{
-        getActivities();
+        getData(`activities`).then((res)=>setActivtities(res.data.data));
     }, [])
 
     const handleDelete = async (id) =>{
