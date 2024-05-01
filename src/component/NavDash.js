@@ -44,7 +44,7 @@ export default function NavDash({children}) {
             <Navbar className="px-3" style={{borderBottom:"2px solid #3333"}}>
                 <button onClick={showMenu}><Navbar.Brand><i className='bx bxs-grid-alt'></i> Travel<span style={{color:"#0d6efd"}}>Land</span></Navbar.Brand></button>
                 <Nav className="ms-auto">
-                    <Nav.Link><i className='bx bxs-home'></i>Home</Nav.Link>
+                    <Nav.Link onClick={()=>route.push(`/form/profile/update`)}><i className='bx bxs-home'></i>Home</Nav.Link>
                     <Nav.Link onClick={handleLogout}><i className='bx bx-log-out fs-3'></i></Nav.Link>
                 </Nav>
             </Navbar>

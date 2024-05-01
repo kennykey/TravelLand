@@ -5,8 +5,8 @@ import { useState } from "react";
 import { Container,Form,Button } from "react-bootstrap";
 
 
-export default function createCategory(){
-    const [categoryImage,setcategoryImage] = useState(null);
+export default function addBanner(){
+    const [bannerImage,setbannerImage] = useState("");
     const [promp, setPromp] = useState('');
     const {postCreate} = useCreate();
     const route = useRouter()
@@ -21,23 +21,21 @@ export default function createCategory(){
         formData.append('image', file);
         try {
             const res = await postCreate('upload-image', formData);
-            setcategoryImage([...categoryImage, res?.data?.url]);
-            setcategoryImage(res?.data?.url);
+            setbannerImage(res.data.url);
         } catch (err) {
-            setPromp(err?.response?.data?.message);
+            setPromp(err);
         }
-    console.log(setcategoryImage);
     };
 
     const handleUpload = async (e) => {
         e.preventDefault();
-        const categoryData ={
+        const bannerData ={
             name:e.target.name.value,   
-            imageUrl:categoryImage,
+            imageUrl:bannerImage,
         }
-        console.log(categoryData);
+        console.log(bannerData);
         try {
-            const res = await postCreate('create-category', categoryData);
+            const res = await postCreate('create-banner', bannerData);
             if (res?.status === 200) {
                 setPromp(res?.data?.message);
             }
@@ -51,9 +49,9 @@ export default function createCategory(){
             <Container className="d-flex m-5 tengah">
                 <Form  onSubmit={handleUpload} style={{width:"400px"}}>
                     <p>{promp}</p>
-                    <img src={categoryImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
+                    <img src={bannerImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
                     <Form.Group className="mb-3" controlId="formName">
-                        <Form.Control type="text" placeholder="Enter name category" name="name"/>
+                        <Form.Control type="text" placeholder="Enter name banner" name="name"/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formImage">
                         <Form.Control type="file" placeholder="Enter image file" name="image" onChange={handleChange}/>

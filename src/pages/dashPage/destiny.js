@@ -1,14 +1,17 @@
+"use client"
 import NavDash from "@/component/NavDash";
 import useDelete from "@/useApi/useDelete"
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Destiny(){
     const [banner, setBanner] = useState([]);
     const {deleteData} = useDelete();
     const {getData} = useGetData()
     const route = useRouter();
+
     useEffect(()=>{
         getData(`banners`).then((res)=>setBanner(res.data.data));
     }, [])

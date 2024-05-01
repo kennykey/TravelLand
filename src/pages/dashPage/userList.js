@@ -1,11 +1,14 @@
+"use client"
 import NavDash from "@/component/NavDash";
 import useGetData from "@/useApi/useGetData";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 
 export default function userList(){
     const {getData} = useGetData();
     const [user, setUser] = useState([]);
+    const route = useRouter();
 
     useEffect(()=>{
         getData(`all-user`).then((res)=>setUser(res.data.data));
@@ -14,9 +17,6 @@ export default function userList(){
     return(
         <NavDash>
             <div className="container mx-5 mt-3">
-                <div className="text-end my-3" style={{width:"97%"}}>
-                    <button className="btn btn-primary">Add</button>
-                </div>
                 <div className="text-center">
                 <table className="table table-bordered" style={{width:"80%"}}>
                     <thead>
@@ -40,7 +40,7 @@ export default function userList(){
                                 <td>{userData.phoneNumber}</td>
                                 <td>
                                     <div className="d-flex">
-                                        <button className="btn btn-success">Update</button>
+                                        <button className="btn btn-success" onClick={()=>route.push(`/form/user/${userData.id}`)}>Update</button>
                                     </div>
                                 </td>
                             </tr>

@@ -1,10 +1,10 @@
 import { createStore, combineReducers} from 'redux'
-import cartReducer from '../feature/modalSlice';
+import modalReducer from '../feature/modalSlice';
 import authReducer from '../feature/authSlice';
 
 
 const rootReducer = combineReducers({
-    cart: cartReducer,
+    modal: modalReducer,
     auth: authReducer,
 })
 

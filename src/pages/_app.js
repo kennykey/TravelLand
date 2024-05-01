@@ -9,7 +9,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { StoreProvider } from '@/redux/storeProvider';
 
-
 export default function App({ Component, pageProps }) {
   return (
     <StoreProvider>

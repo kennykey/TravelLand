@@ -1,3 +1,4 @@
+"use client"
 import NavDash from "@/component/NavDash";
 import useDelete from "@/useApi/useDelete"
 import useGetData from "@/useApi/useGetData";

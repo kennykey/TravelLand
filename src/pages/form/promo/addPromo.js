@@ -1,21 +1,15 @@
 import NavDash from "@/component/NavDash";
 import useCreate from "@/useApi/useCreate";
-import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container,Form,Button } from "react-bootstrap";
 
 
-export default function updatePromo(){
-    const {getData} = useGetData();
+export default function addPromo(){
     const [promoImage,setpromoImage] = useState(null);
     const [promp, setPromp] = useState('');
     const {postCreate} = useCreate();
     const route = useRouter()
-
-    useEffect(()=>{
-        getData(`promo/${route.query.id}`);
-    })
 
     const handleChange = async (e) => {
         const file = e.target.files[0];
@@ -27,10 +21,9 @@ export default function updatePromo(){
         formData.append('image', file);
         try {
             const res = await postCreate('upload-image', formData);
-            setpromoImage([...promoImage, res?.data?.url]);
-            setpromoImage(res?.data?.url);
+            setpromoImage(res.data.url);
         } catch (err) {
-            setPromp(err?.response?.data?.message);
+            setPromp(err);
         }
     console.log(setpromoImage);
     };
@@ -43,12 +36,12 @@ export default function updatePromo(){
             imageUrl:promoImage,
             terms_condition:e.target.term.value,
             promo_code:e.target.code.value,
-            promo_discount_price:e.target.discount.value,
-            minimum_claim_price:e.target.claim.value,
+            promo_discount_price: Number(e.target.discount.value),
+            minimum_claim_price: Number(e.target.claim.value),
         }
         console.log(promoData);
         try {
-            const res = await postCreate(`update-promo${route.query.id}`, promoData);
+            const res = await postCreate('create-promo', promoData);
             if (res?.status === 200) {
                 setPromp(res?.data?.message);
             }

@@ -1,15 +1,22 @@
 import NavDash from "@/component/NavDash";
-import useCreate from "@/useApi/useCreate";
+import useGetData from "@/useApi/useGetData";
+import useCreate from "@/useApi/useCreate"
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container,Form,Button } from "react-bootstrap";
 
 
-export default function addBanner(){
+export default function updateBanner(){
+    const {getData} = useGetData();
+    const [update, setUpdate] = useState([]);
     const [bannerImage,setbannerImage] = useState("");
     const [promp, setPromp] = useState('');
     const {postCreate} = useCreate();
-    const route = useRouter()
+    const route = useRouter();
+
+    useEffect(() => {
+        getData(`banner/${route.query.id}`).then((resp)=>setUpdate(resp?.data?.data));
+      }, []);
 
     const handleChange = async (e) => {
         const file = e.target.files[0];
@@ -20,11 +27,10 @@ export default function addBanner(){
         const formData = new FormData();
         formData.append('image', file);
         try {
-            const res = await postCreate('upload-image', formData);
-            setbannerImage([...bannerImage, res?.data?.url]);
-            setbannerImage(res?.data?.url);
+            const res = await postCreate(`upload-image`, formData);
+            setbannerImage(res.data.url);
         } catch (err) {
-            setPromp(err?.response?.data?.message);
+            setPromp(err);
         }
     console.log(setbannerImage);
     };
@@ -37,7 +43,7 @@ export default function addBanner(){
         }
         console.log(bannerData);
         try {
-            const res = await postCreate('create-banner', bannerData);
+            const res = await postCreate(`update-banner/${route.query.id}`, bannerData);
             if (res?.status === 200) {
                 setPromp(res?.data?.message);
             }

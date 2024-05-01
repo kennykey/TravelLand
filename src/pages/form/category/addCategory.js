@@ -1,21 +1,15 @@
 import NavDash from "@/component/NavDash";
 import useCreate from "@/useApi/useCreate";
-import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container,Form,Button } from "react-bootstrap";
 
 
-export default function updateCategory(){
-    const {getData} = useGetData();
+export default function createCategory(){
     const [categoryImage,setcategoryImage] = useState(null);
     const [promp, setPromp] = useState('');
     const {postCreate} = useCreate();
     const route = useRouter()
-
-    useEffect(()=>{
-        getData(`category/${route.query.id}`);
-    })
 
     const handleChange = async (e) => {
         const file = e.target.files[0];
@@ -26,11 +20,10 @@ export default function updateCategory(){
         const formData = new FormData();
         formData.append('image', file);
         try {
-            const res = await postCreate(`upload-image/${route.query.id}`, formData);
-            setcategoryImage([...categoryImage, res?.data?.url]);
-            setcategoryImage(res?.data?.url);
+            const res = await postCreate('upload-image', formData);
+            setcategoryImage(res.data.url);
         } catch (err) {
-            setPromp(err?.response?.data?.message);
+            setPromp(err);
         }
     console.log(setcategoryImage);
     };
@@ -43,7 +36,7 @@ export default function updateCategory(){
         }
         console.log(categoryData);
         try {
-            const res = await postCreate('update-category', categoryData);
+            const res = await postCreate('create-category', categoryData);
             if (res?.status === 200) {
                 setPromp(res?.data?.message);
             }

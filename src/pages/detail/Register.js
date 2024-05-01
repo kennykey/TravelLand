@@ -1,11 +1,14 @@
+"use client"
 import { Container,Form,Button } from "react-bootstrap"
 import React ,{ useState } from "react"
 import LayOut from "@/component/LayOut";
 import useAuth from "@/useApi/useAuth";
+import { useDispatch } from "react-redux";
 
 
 export default function Register() {
   const {Auth,loading} = useAuth();
+  const dispatch = useDispatch();
 
   const handleRegister = (e) =>{
     e.preventDefault();
@@ -21,6 +24,9 @@ export default function Register() {
       'register',
       {email,name,password,passwordRepeat,role,profilePictureUrl,phoneNumber}
     )
+
+    if(!email && !password) return
+    dispatch(Logout(email,password));
   }
 
   if(loading){

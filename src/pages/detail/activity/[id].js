@@ -1,3 +1,4 @@
+"use client"
 import LayOut from "@/component/LayOut";
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";

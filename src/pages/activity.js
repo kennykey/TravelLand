@@ -1,3 +1,4 @@
+"use client"
 import ActivityPage from "@/component/Fragment/ActivityPage";
 import LayOut from "@/component/LayOut";
 

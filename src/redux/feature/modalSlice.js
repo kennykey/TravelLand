@@ -2,7 +2,7 @@ const initialState = {
   isOpen: false,
 }
 
-const cartReducer = (state = initialState,action) =>{
+const modalReducer = (state = initialState,action) =>{
   switch (action.type){
     case 'openModal':
       return {...state,
@@ -17,4 +17,4 @@ export const openModal = () =>{
   return {type:'openModal'};
 }
 
-export default cartReducer;
+export default modalReducer;

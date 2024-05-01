@@ -18,11 +18,12 @@ export default function useAuth(){
         localStorage.setItem('token',resp.data.token);
         localStorage.setItem('email',resp.data.data.email);
         route.push("/dashPage/userList");
+        setLoading(false); 
         } catch(error){
         console.error("Gagal melakukan autentikasi:", error.message);
         alert("Gagal melakukan autentikasi. Silakan coba lagi.");
-        }
         setLoading(false); 
+        }
     };
 
     const account = async()=>{

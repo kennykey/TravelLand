@@ -1,15 +1,22 @@
 import NavDash from "@/component/NavDash";
 import useCreate from "@/useApi/useCreate";
+import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Container,Form,Button } from "react-bootstrap";
 
 
-export default function addActivity(){
+export default function updateActivty(){
+    const {getData} = useGetData()
+    const [update, setUpdate] = useState([]);
     const [activityImage,setactivityImage] = useState(null);
     const [promp, setPromp] = useState('');
     const {postCreate} = useCreate();
     const route = useRouter()
+    
+    useEffect(()=>{
+        getData(`activity/${route.query.id}`).then((resp)=>setUpdate(resp?.data?.data));
+    }, [])
 
     const handleChange = async (e) => {
         const file = e.target.files[0];
@@ -21,10 +28,9 @@ export default function addActivity(){
         formData.append('image', file);
         try {
             const res = await postCreate('upload-image', formData);
-            setactivityImage([...activityImage, res?.data?.url]);
-            setactivityImage(res?.data?.url);
+            setactivityImage(res.data.url);
         } catch (err) {
-            setPromp(err?.response?.data?.message);
+            setPromp(err);
         }
     console.log(setactivityImage);
     };
@@ -36,10 +42,10 @@ export default function addActivity(){
             title:e.target.name.value,  
             description:e.target.description.value,   
             imageUrls:activityImage,
-            price:e.target.price.value,
-            price_discount:e.target.discount.value,  
-            rating:e.target.rating.value,  
-            total_reviews:e.target.review.value,
+            price: Number(e.target.price.value),
+            price_discount: Number(e.target.discount.value),  
+            rating: Number(e.target.rating.value),  
+            total_reviews: Number(e.target.review.value),
             facilities:e.target.facilities.value,  
             address:e.target.address.value,  
             province:e.target.province.value,
@@ -48,7 +54,7 @@ export default function addActivity(){
         }
         console.log(activityData);
         try {
-            const res = await postCreate('create-activity', activityData);
+            const res = await postCreate(`update-activity/${route.query.id}`, activityData);
             if (res?.status === 200) {
                 setPromp(res?.data?.message);
             }
@@ -100,7 +106,7 @@ export default function addActivity(){
                         <Form.Control type="text" placeholder="Enter city activity" name="city"/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formName">
-                        <Form.Control type="url" placeholder="Enter location activity" name="location"/>
+                        <Form.Control type="text" placeholder="Enter location activity" name="location"/>
                     </Form.Group>
                     <Button variant="primary" type="submit" className="w-100">
                         Submit

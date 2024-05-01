@@ -1,3 +1,4 @@
+"use client"
 import { Container,Form,Button } from "react-bootstrap"
 import useAuth from "@/useApi/useAuth";
 import React ,{ useState } from "react"

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 export default function create(){
     const route = useRouter();
@@ -14,6 +13,7 @@ export default function create(){
                     apiKey:"24405e01-fbc1-45a5-9f5a-be13afcd757c",
                 }
             });
+            return post;
         }catch(error){
             console.log(error);
         }

@@ -1,21 +1,22 @@
 import NavDash from "@/component/NavDash";
+import useCreate from "@/useApi/useCreate";
 import useGetData from "@/useApi/useGetData";
-import useCreate from "@/useApi/useCreate"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Container,Form,Button } from "react-bootstrap";
 
 
-export default function updateBanner(){
+export default function updateCategory(){
     const {getData} = useGetData();
-    const [bannerImage,setbannerImage] = useState("");
+    const [update, setUpdate] = useState([]);
+    const [categoryImage,setcategoryImage] = useState(null);
     const [promp, setPromp] = useState('');
     const {postCreate} = useCreate();
-    const route = useRouter();
+    const route = useRouter()
 
-    useEffect(() => {
-        getData(`banner/${route.query.id}`);
-      }, []);
+    useEffect(()=>{
+        getData(`category/${route.query.id}`).then((resp)=>setUpdate(resp?.data?.data));
+    })
 
     const handleChange = async (e) => {
         const file = e.target.files[0];
@@ -27,23 +28,22 @@ export default function updateBanner(){
         formData.append('image', file);
         try {
             const res = await postCreate(`upload-image`, formData);
-            setbannerImage([...bannerImage, res?.data?.url]);
-            setbannerImage(res?.data?.url);
+            setcategoryImage(res.data.url);
         } catch (err) {
-            setPromp(err?.response?.data?.message);
+            setPromp(err);
         }
-    console.log(setbannerImage);
+    console.log(setcategoryImage);
     };
 
     const handleUpload = async (e) => {
         e.preventDefault();
-        const bannerData ={
+        const categoryData ={
             name:e.target.name.value,   
-            imageUrl:bannerImage,
+            imageUrl:categoryImage,
         }
-        console.log(bannerData);
+        console.log(categoryData);
         try {
-            const res = await postCreate(`update-banner/${route.query.id}`, bannerData);
+            const res = await postCreate(`update-category/${route.query.id}`, categoryData);
             if (res?.status === 200) {
                 setPromp(res?.data?.message);
             }
@@ -57,9 +57,9 @@ export default function updateBanner(){
             <Container className="d-flex m-5 tengah">
                 <Form  onSubmit={handleUpload} style={{width:"400px"}}>
                     <p>{promp}</p>
-                    <img src={bannerImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
+                    <img src={categoryImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
                     <Form.Group className="mb-3" controlId="formName">
-                        <Form.Control type="text" placeholder="Enter name banner" name="name"/>
+                        <Form.Control type="text" placeholder="Enter name category" name="name"/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formImage">
                         <Form.Control type="file" placeholder="Enter image file" name="image" onChange={handleChange}/>
