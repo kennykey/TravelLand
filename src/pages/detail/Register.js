@@ -4,12 +4,31 @@ import React ,{ useState } from "react"
 import LayOut from "@/component/LayOut";
 import useAuth from "@/useApi/useAuth";
 import { useDispatch } from "react-redux";
+import useCreate from "@/useApi/useCreate";
 import Image from "next/image";
 
-
 export default function Register() {
+  const [image, setImage] = useState([]);
+  const {postCreate} = useCreate()
   const {Auth,loading} = useAuth();
   const dispatch = useDispatch();
+  const [prompt, setPromp] = useState([]);
+
+  const handleChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file?.type?.startsWith('image/')) {
+        setPromp('File should be .jpeg, .jpg or .png format');
+        return;
+    }
+    const formData = new FormData();
+    formData.append('image', file);
+    try {
+        const res = await postCreate('upload-image', formData);
+        setImage(res.data.url);
+    } catch (err) {
+        setPromp(err);
+        }
+};
 
   const handleRegister = (e) =>{
     e.preventDefault();
@@ -18,7 +37,7 @@ export default function Register() {
     const password = e.target.password.value;
     const passwordRepeat = e.target.passwordRepeat.value;
     const role = e.target.role.value;  
-    const profilePictureUrl = e.target.profilePictureUrl.value;
+    const profilePictureUrl = image;
     const phoneNumber = e.target.phoneNumber.value;
 
     Auth(
@@ -46,6 +65,7 @@ export default function Register() {
         </Container>
         <Container>
           <Form onSubmit={handleRegister}>
+            <p>{prompt}</p>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" placeholder="Enter email" name="email"/>
@@ -71,7 +91,7 @@ export default function Register() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicprofilePictureUrl">
               <Form.Label>profilePictureUrl</Form.Label>
-              <Form.Control type="url" placeholder="Enter profilePictureUrl" name="profilePictureUrl"/>
+              <Form.Control type="file" placeholder="Enter image file" name="image" onChange={handleChange}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicphoneNumber">
               <Form.Label>phoneNumber</Form.Label>

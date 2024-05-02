@@ -4,7 +4,6 @@ import useDelete from "@/useApi/useDelete"
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 
 export default function Destiny(){
     const [banner, setBanner] = useState([]);
