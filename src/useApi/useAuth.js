@@ -26,20 +26,5 @@ export default function useAuth(){
         }
     };
 
-    const account = async()=>{
-        try{
-            const resp = await axios.get(`https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user`,
-                {
-                    headers:{
-                        Authorization:`Bearer ${localStorage.getItem("token")}`,
-                        apiKey:"24405e01-fbc1-45a5-9f5a-be13afcd757c",
-                    },
-                });
-                return resp;
-        }catch(error){
-            console.log(error);
-        }
-    }
-
-    return {Auth, account, loading};
+    return {Auth, loading};
 }

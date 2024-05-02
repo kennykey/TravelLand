@@ -3,6 +3,7 @@ import LayOut from "@/component/LayOut";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useGetData from "@/useApi/useGetData";
+import Image from "next/image";
 export default function promoDetail(){
     const [detail, setDetail] = useState([]);
     const route = useRouter();
@@ -16,7 +17,7 @@ export default function promoDetail(){
     return(
         <LayOut>
             <div key={detail.id} className=" container mx-auto tengah-detail gap-5 border border-dark p-5 m-5" style={{width:"40%"}}>
-                <img src={detail.imageUrl} alt={detail.name} className="img-detail mx-auto"/>
+                <Image src={detail.imageUrl} alt={detail.name} className="img-detail mx-auto" height={300} width={300}/>
                 <div className="ps-4 text-start">
                     <p>Name: {detail.title}</p>
                     <p>description: {detail.description}</p>

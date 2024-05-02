@@ -4,18 +4,17 @@ import Sidebar from "./Sidebar";
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import axios from "axios";
-import useAuth from "@/useApi/useAuth";
 
 export default function NavDash({children}) {
-    const {accountUser, account} = useAuth();
+    const [account, setAccount] = useState([]);
     const [menu, menuBar] = useState(true);
     const {getData} = useGetData();
     const route = useRouter()
     
     useEffect(()=>{
-        account();
-        getData(`user`).then((res)=>(res?.data?.data))
+        getData(`user`).then((res)=>setAccount(res?.data?.data))
     }, [])
+    console.log(account);
 
     const handleLogout = () =>{
         try{
@@ -44,7 +43,7 @@ export default function NavDash({children}) {
             <Navbar className="px-3" style={{borderBottom:"2px solid #3333"}}>
                 <button onClick={showMenu}><Navbar.Brand><i className='bx bxs-grid-alt'></i> Travel<span style={{color:"#0d6efd"}}>Land</span></Navbar.Brand></button>
                 <Nav className="ms-auto">
-                    <Nav.Link onClick={()=>route.push(`/form/profile/update`)}><i className='bx bxs-home'></i>Home</Nav.Link>
+                    <Nav.Link onClick={()=>route.push(`/form/profile/update`)}><div className="d-flex gap-3"><img src={account.profilePictureUrl} alt={account.name} style={{width:"30px", height:"30px", borderRadius:"50%"}}/>{account.name}</div></Nav.Link>
                     <Nav.Link onClick={handleLogout}><i className='bx bx-log-out fs-3'></i></Nav.Link>
                 </Nav>
             </Navbar>

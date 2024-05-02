@@ -3,6 +3,7 @@ import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import AOS from "aos";
+import Image from "next/image";
 
 export default function BannerPage(){
     const [banner, setBanner] = useState([])
@@ -24,7 +25,7 @@ export default function BannerPage(){
               <div key={bann.id}>
                 <button aria-label={bann.name} onClick={()=>route.push(`/detail/banner/${bann.id}`)}>
                     <div className="card" style={{width:"16rem"}}>
-                      <img src={bann.imageUrl} alt={bann.name} className="card-img" style={{height:"11rem"}}/>
+                      <Image src={bann.imageUrl} alt={bann.name} className="card-img" width={350} height={350} style={{height:"11rem"}}/>
                       <div className="cardText">
                         <h5 className="card-title">{bann.name}</h5>
                       </div>

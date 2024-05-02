@@ -2,8 +2,10 @@ import NavDash from "@/component/NavDash"
 import { Container,Form,Button } from "react-bootstrap";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import useCreate from "@/useApi/useCreate";
 
 export default function UpdateUser(){
+    const {postCreate} = useCreate();
     const [promp, setPromp] = useState([]);
     const route = useRouter();
 
@@ -27,7 +29,7 @@ export default function UpdateUser(){
             <Container className="m-5" style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
                 <Form onSubmit={handleUpload}>
                     <p>{promp}</p>
-                    <Form.Group className="mb-3" controlId="formBasicrole" className="w-100">
+                    <Form.Group className="mb-3 w-100" controlId="formBasicrole">
                     <Form.Label>role</Form.Label>
                     <Form.Select name="role">
                         <option role="user">user</option>

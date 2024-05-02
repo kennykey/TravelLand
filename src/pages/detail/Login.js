@@ -4,6 +4,7 @@ import useAuth from "@/useApi/useAuth";
 import React ,{ useState } from "react"
 import LayOut from "@/component/LayOut";
 import { useDispatch, useSelector } from "react-redux";
+import Image from "next/image";
 
 export default function Login(){
     const {Auth,loading} = useAuth();
@@ -36,7 +37,7 @@ export default function Login(){
         <LayOut>
             <Container className="d-flex m-5 tengah">
                 <Container>
-                    <img src="/sign_in.png" alt="Sign_in" className="img-fluid"/>
+                    <Image src="/sign_in.png" alt="Sign_in" className="img-fluid" height={400} width={400}/>
                 </Container>
                 <Container className="m-5">
                     <Form onSubmit={handleLogin} style={{width:"400px"}}>

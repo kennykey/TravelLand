@@ -1,6 +1,7 @@
 import useGetData from "@/useApi/useGetData"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 
 
@@ -19,7 +20,7 @@ export default function ActivityPage(){
                     detail.map((res)=>(
                         <div key={res.id}>
                             <button onClick={()=>route.push(`/detail/activity/${res.id}`)}>
-                                <img src={res.imageUrls[0] || res.imageUrls[1]} alt={res.title} style={{height:"14rem", width:"16rem"}}/>
+                                <Image src={res.imageUrls[0] || res.imageUrls[1]} alt={res.title} width={300} height={300} style={{height:"300px"}}/>
                                 <div>
                                     <h6>{res.title}</h6>
                                 </div>

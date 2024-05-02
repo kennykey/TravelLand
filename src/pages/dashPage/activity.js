@@ -18,7 +18,7 @@ export default function Activity(){
     const handleDelete = async (id) =>{
         try{
             const resp = await deleteData(`delete-activity/${id}`);
-        if (resp.status === 200) {
+            if (resp.status === 200) {
             window.location.reload();
             }
         } catch (error) {
@@ -39,9 +39,8 @@ export default function Activity(){
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{activi.title}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
-                                    <button className="btn btn-success" onClick={()=>route.push(`/form/acitvity/${activi.id}`)}>Update</button>
-                                    {/* <button className="btn btn-danger" onClick={handleDelete(activi.id)}>Delete</button> */}
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-success" onClick={()=> route.push(`/form/activity/${activi.id}`)}>Update</button>
+                                    <button className="btn btn-danger" onClick={() => handleDelete(activi.id)}>Delete</button>
                                 </div>
                             </div>
                         </div>

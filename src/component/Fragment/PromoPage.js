@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect,useState } from "react";
 import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper,SwiperSlide } from "swiper/react";
+import Image from "next/image";
 import AOS from "aos";
 
 export default function PromoPage(){
@@ -37,7 +38,7 @@ export default function PromoPage(){
                     <SwiperSlide>
                       <div key={prom.id}>
                         <button className="btn" aria-label={prom.title} onClick={()=>route.push(`/detail/promo/${prom.id}`)}>
-                          <img src={prom.imageUrl} alt={prom.title} style={{height:"24rem"}}/>
+                          <Image src={prom.imageUrl} alt={prom.title} width={300} height={300}  style={{height:"24rem"}}/>
                         </button>
                       </div>
                     </SwiperSlide>

@@ -67,7 +67,7 @@ export default function updateActivty(){
         <NavDash>
             <Container className="d-flex m-5 tengah">
                 <Form  onSubmit={handleUpload} style={{width:"400px"}}>
-                    <p>{promp}</p>
+                <p>{promp}</p>
                     <img src={activityImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
                     <Form.Group className="mb-3" controlId="formCategoryID">
                         <Form.Control type="text" placeholder="Enter categoryID activity" name="categoryID"/>
@@ -106,7 +106,7 @@ export default function updateActivty(){
                         <Form.Control type="text" placeholder="Enter city activity" name="city"/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formName">
-                        <Form.Control type="text" placeholder="Enter location activity" name="location"/>
+                        <Form.Control as="textarea" rows={3} placeholder="Enter location activity" name="location"/>
                     </Form.Group>
                     <Button variant="primary" type="submit" className="w-100">
                         Submit

@@ -4,6 +4,7 @@ import React ,{ useState } from "react"
 import LayOut from "@/component/LayOut";
 import useAuth from "@/useApi/useAuth";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 
 
 export default function Register() {
@@ -41,7 +42,7 @@ export default function Register() {
     <LayOut>
       <Container className="m-5" style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
         <Container>
-          <img src="/sign_up.png" alt="Sign_in"/>
+          <Image src="/sign_up.png" alt="Sign_in" height={400} width={400}/>
         </Container>
         <Container>
           <Form onSubmit={handleRegister}>

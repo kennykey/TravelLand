@@ -1,11 +1,14 @@
 import NavDash from "@/component/NavDash";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import useCreate from "@/useApi/useCreate";
 import { Container,Form,Button } from "react-bootstrap";
+
 
 export default function updateProfile(){
     const [profileImage, setProfileImage] = useState([]);
     const [promp, setPromp] = useState([]);
+    const {postCreate} = useCreate();
     const route = useRouter();
 
     const handleChange = async (e) => {
@@ -29,8 +32,8 @@ export default function updateProfile(){
         const profileData ={
             name:e.target.name.value,
             email:e.target.email.value,      
-            imageUrl:categoryImage,
-            phoneNumber: Number(e.target.phoneNumber.value),
+            imageUrl:profileImage,
+            phoneNumber: e.target.phoneNumber.value,
         }
         console.log(profileData);
         try {

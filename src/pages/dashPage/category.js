@@ -39,9 +39,8 @@ export default function Category(){
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{catego.name}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
-                                    <button className="btn btn-success" onClick={()=>route.push(`/form/category/${catego.id}`)}>Update</button>
-                                    {/* <button className="btn btn-danger" onClick={handleDelete(catego.id)}>Delete</button> */}
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-success" onClick={()=> route.push(`/form/category/${catego.id}`)}>Update</button>
+                                    <button className="btn btn-danger" onClick={() => handleDelete(catego.id)}>Delete</button>
                                 </div>
                             </div>
                         </div>

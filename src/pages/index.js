@@ -5,6 +5,7 @@ import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper,SwiperSlide } from "swiper/react";
 import BannerPage from "@/component/Fragment/BannerPage";
 import PromoPage from "@/component/Fragment/PromoPage";
+import Image from "next/image";
 
 export default function Home() {
   const route = useRouter();
@@ -29,9 +30,9 @@ export default function Home() {
               autoplay={{delay: 2500}}
               pagination={{clickable: true}}
               virtual>
-                <SwiperSlide><img src="landing2.jpg" className="d-block dash" alt="part2"/></SwiperSlide>
-                <SwiperSlide><img src="landing.jpg" className="d-block dash" alt="part"/></SwiperSlide>
-                <SwiperSlide><img src="landing3.jpg" className="d-block dash" alt="part3"/></SwiperSlide>
+                <SwiperSlide><Image src="/landing2.jpg" width={300} height={500} className="d-block dash" alt="part2"/></SwiperSlide>
+                <SwiperSlide><Image src="/landing.jpg" width={300} height={500} className="d-block dash" alt="part"/></SwiperSlide>
+                <SwiperSlide><Image src="/landing3.jpg" width={300} height={500} className="d-block dash" alt="part3"/></SwiperSlide>
             </Swiper>
           </div>
         </div>
@@ -40,19 +41,19 @@ export default function Home() {
       <section>
         <div className="container-fluid tengah my-5 gap-3" data-aos="flip-up">
             <div class="card logo" style={{border:"none"}}>
-                <img src="pesawat1.svg" class="card-img" alt="logo1"/>
+                <Image src="/pesawat1.svg" width={300} height={300} class="card-img" alt="logo1"/>
             </div>
             <div class="card logo" style={{border:"none"}}>
-                <img src="pesawat2.svg" class="card-img" alt="logo1"/>
+                <Image src="/pesawat2.svg" width={300} height={300} class="card-img" alt="logo1"/>
             </div>
             <div class="card logo" style={{border:"none"}}>
-                <img src="pesawat3.svg" class="card-img" alt="logo1"/>
+                <Image src="/pesawat3.svg" width={300} height={300} class="card-img" alt="logo1"/>
             </div>
             <div class="card logo" style={{border:"none"}}>
-                <img src="pesawat4.svg" class="card-img" alt="logo1"/>
+                <Image src="/pesawat4.svg" width={300} height={300} class="card-img" alt="logo1"/>
             </div>
             <div class="card logo" style={{border:"none"}}>
-                <img src="pesawat5.svg" class="card-img" alt="logo1"/>
+                <Image src="/pesawat5.svg" width={300} height={300} class="card-img" alt="logo1"/>
             </div>
         </div>
       </section>
@@ -60,6 +61,7 @@ export default function Home() {
       <BannerPage/>
       
       <PromoPage/>
+
       <hr className="solid-border mt-5"/>
     </LayOut>
   );

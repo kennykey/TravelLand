@@ -1,6 +1,7 @@
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import { useEffect,useState } from "react";
+import Image from "next/image";
 import AOS from "aos";
 
 export default function PromoPageTwo(){
@@ -18,7 +19,7 @@ export default function PromoPageTwo(){
                     promo.map((resp)=>(
                         <div key={resp.id}>
                             <button onClick={()=>route.push(`/detail/promo/${resp.id}`)}>
-                                <img src={resp.imageUrl} alt={resp.title} style={{width:"16rem", height:"14rem"}}/>
+                                <Image src={resp.imageUrl} alt={resp.title} width={300} height={300} style={{height:"14rem"}}/>
                             </button>
                         </div> 
                     ))

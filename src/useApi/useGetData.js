@@ -2,10 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function useGetData() {
+    const Base_Url = 'https://travel-journal-api-bootcamp.do.dibimbing.id';
+    
     const getData = async (url) => {
         try {
             const resp = await axios.get(
-                `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,{
+                `${Base_Url}/api/v1/${url}`,{
                     headers: {
                         Authorization:`Bearer ${localStorage.getItem("token")}`,
                         apiKey: "24405e01-fbc1-45a5-9f5a-be13afcd757c",

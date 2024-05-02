@@ -32,7 +32,7 @@ export default function addActivity(){
         e.preventDefault();
         const activityData ={
             categoryId:e.target.categoryID.value,
-            title:e.target.name.value,  
+            title:e.target.title.value,  
             description:e.target.description.value,   
             imageUrls:activityImage,
             price: Number(e.target.price.value),
@@ -99,7 +99,7 @@ export default function addActivity(){
                         <Form.Control type="text" placeholder="Enter city activity" name="city"/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formName">
-                        <Form.Control type="text" placeholder="Enter location activity" name="location"/>
+                        <Form.Control as="textarea" rows={3} placeholder="Enter location activity" name="location"/>
                     </Form.Group>
                     <Button variant="primary" type="submit" className="w-100">
                         Submit

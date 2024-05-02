@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper/modules";
+import Image from "next/image";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -28,7 +29,7 @@ export default function CategoryPage(){
                         <SwiperSlide>
                         <div key={res.id}>
                             <button onClick={()=> route.push(`/detail/category/${res.id}`)} style={{width:"100%"}}>
-                                <img src={res.imageUrl} alt={res.name}/>
+                                <Image src={res.imageUrl} alt={res.name} width={1000} height={400}/>
                             </button>
                         </div>
                         </SwiperSlide>

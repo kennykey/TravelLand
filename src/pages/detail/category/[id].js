@@ -3,6 +3,7 @@ import LayOut from "@/component/LayOut";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useGetData from "@/useApi/useGetData";
+import Image from "next/image";
 
 export default function categoryDetail(){
     const [detail, setDetail] = useState([]);
@@ -16,7 +17,7 @@ export default function categoryDetail(){
     return(
         <LayOut>
             <div key={detail.id} className=" container mx-auto tengah-detail gap-5 border border-dark p-5 m-5" style={{width:"40%"}}>
-                <img src={detail.imageUrl} alt={detail.name} className="img-detail mx-auto"/>
+                <Image src={detail.imageUrl} alt={detail.name} className="img-detail mx-auto" height={300} width={300}/>
                 <div className="ps-5 text-start">
                     <p>Name: {detail.name}</p>
                     <p>Create at: {detail.createdAt}</p>

@@ -16,11 +16,11 @@ export default function Destiny(){
         getData(`banners`).then((res)=>setBanner(res.data.data));
     }, [])
 
-    const handleDelete = async (id) =>{
-        try{
+    const handleDelete = async (id) => {
+        try {
             const resp = await deleteData(`delete-banner/${id}`);
-        if (resp.status === 200) {
-            window.location.reload();
+            if (resp.status === 200) {
+                window.location.reload();
             }
         } catch (error) {
             console.log(error);
@@ -35,14 +35,13 @@ export default function Destiny(){
                 </div>
                 {banner.length>0 &&(
                     banner.map((bannered)=>(
-                        <div key={bannered.id}>
+                        <div key={bannered.id} style={{top:"100%"}}>
                             <img src={bannered.imageUrl} alt={bannered.name} style={{height:"14rem", width:"14rem"}}/>
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{bannered.name}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
                                     <button className="btn btn-success" onClick={()=>route.push(`/form/banner/${bannered.id}`)}>Update</button>
-                                    {/* <button className="btn btn-danger" onClick={handleDelete(bannered.id)}>Delete</button> */}
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-danger" onClick={() => handleDelete(bannered.id)}>Delete</button>
                                 </div>
                             </div>
                         </div>

@@ -40,8 +40,7 @@ import useGetData from "@/useApi/useGetData";
                                 <h6 className="fw-bold pt-3">{promon.title}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
                                     <button className="btn btn-success" onClick={()=>route.push(`/form/promo/${promon.id}`)}>Update</button>
-                                    {/* <button className="btn btn-danger" onClick={handleDelete(promon.id)}>Delete</button> */}
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-danger" onClick={() => handleDelete(promon.id)}>Delete</button>
                                 </div>
                             </div>
                         </div>
