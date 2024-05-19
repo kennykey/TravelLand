@@ -32,7 +32,7 @@ export default function ActivityDetail(){
                     <p>Address: {detail.address}</p>
                     <p>Province: {detail.province}</p>
                     <p>City: {detail.city}</p>
-                    {/* <iframe src={detail.location_maps}></iframe> */}
+                    <div dangerouslySetInnerHTML={{__html:detail.location_maps}}/>
                     <p>Create at: {detail.createdAt}</p>
                     <p>Update at: {detail.updatedAt}</p>
                 </div>

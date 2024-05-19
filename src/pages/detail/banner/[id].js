@@ -19,7 +19,7 @@ export default function bannerDetail(){
             <div key={detail.id} className=" container mx-auto tengah-detail gap-5 border border-dark p-5 m-5" style={{width:"40%"}}>
                 <Image src={detail.imageUrl} alt={detail.name} className="img-detail mx-auto" height={300} width={300}/>
                 <div>
-                    <p className="fw-bold fs-2 ps-4 text-start">Name: {detail.name}</p>
+                    <p className="text-start">Name: {detail.name}</p>
                 </div>
             </div>
         </LayOut>

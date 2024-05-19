@@ -40,13 +40,13 @@ export default function NavDash({children}) {
     return(
         <div>
             <div>
-            <Navbar className="px-3" style={{borderBottom:"2px solid #3333"}}>
-                <button onClick={showMenu}><Navbar.Brand><i className='bx bxs-grid-alt'></i> Travel<span style={{color:"#0d6efd"}}>Land</span></Navbar.Brand></button>
-                <Nav className="ms-auto">
-                    <Nav.Link onClick={()=>route.push(`/form/profile/update`)}><div className="d-flex gap-3"><img src={account.profilePictureUrl} alt={account.name} style={{width:"30px", height:"30px", borderRadius:"50%"}}/>{account.name}</div></Nav.Link>
-                    <Nav.Link onClick={handleLogout}><i className='bx bx-log-out fs-3'></i></Nav.Link>
-                </Nav>
-            </Navbar>
+                <Navbar className="px-3" style={{borderBottom:"2px solid #3333"}}>
+                    <button onClick={showMenu}><Navbar.Brand><i className='bx bxs-grid-alt'></i> Travel<span style={{color:"#0d6efd"}}>Land</span></Navbar.Brand></button>
+                    <Nav className="ms-auto">
+                        <Nav.Link onClick={()=>route.push(`/form/profile/update`)}><div className="d-flex gap-3"><img src={account.profilePictureUrl} alt={account.name} style={{width:"30px", height:"30px", borderRadius:"50%"}}/>{account.name}</div></Nav.Link>
+                        <Nav.Link onClick={handleLogout}><i className='bx bx-log-out fs-3'></i></Nav.Link>
+                    </Nav>
+                </Navbar>   
             </div>
             <div className="container-fluid d-flex" style={{height:"100vh"}}>
                 {menu && <Sidebar/>}
