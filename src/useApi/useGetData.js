@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
 
 export default function useGetData() {
     const Base_Url = 'https://travel-journal-api-bootcamp.do.dibimbing.id';
@@ -18,5 +17,5 @@ export default function useGetData() {
             console.log(error);
         }
     };
-    return { getData};
+    return { getData };
 }

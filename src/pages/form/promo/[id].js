@@ -3,7 +3,9 @@ import useCreate from "@/useApi/useCreate";
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Container,Form,Button } from "react-bootstrap";
+import { Container,Form } from "react-bootstrap";
+import Input from "@/component/ui/Input";
+import Button from "@/component/ui/Button";
 
 
 export default function updatePromo(){
@@ -63,28 +65,14 @@ export default function updatePromo(){
                 <Form  onSubmit={handleUpload} style={{width:"400px"}}>
                     <p>{promp}</p>
                     <img src={promoImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
-                    <Form.Group className="mb-3" controlId="formName">
-                        <Form.Control type="text" placeholder="Enter title promo " name="title"/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formDescription">
-                        <Form.Control type="text" as="textarea" rows={3} placeholder="Enter description promo " name="description"/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formImage">
-                        <Form.Control type="file" placeholder="Enter image file" name="image" onChange={handleChange}/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formTerm">
-                        <Form.Control type="text" placeholder="Enter term promo " name="term"/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formCode">
-                        <Form.Control type="text" placeholder="Enter code promo " name="code"/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formDiscount">
-                        <Form.Control type="number" placeholder="Enter discount promo " name="discount"/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formClaim">
-                        <Form.Control type="number" placeholder="Enter claim promo " name="claim"/>
-                    </Form.Group>
-                    <Button variant="primary" type="submit" className="w-100">
+                    <Input type='text' id='title' name='title'/>
+                    <Input type='textarea' rows='3' id='description' name='description'/>
+                    <Input type='file' name='image' id='image' onChange={handleChange}/>
+                    <Input type='text' id='term' name='term'/>
+                    <Input type='text' id='code' name='code'/>
+                    <Input type='number' id='discount' name='discount'/>
+                    <Input type='number' id='claim' name='claim'/>
+                    <Button type="submit" className="btn btn-primary w-100">
                         Submit
                     </Button>
                 </Form>

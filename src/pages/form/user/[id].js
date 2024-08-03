@@ -1,8 +1,9 @@
 import NavDash from "@/component/NavDash"
-import { Container,Form,Button } from "react-bootstrap";
+import { Container,Form } from "react-bootstrap";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import useCreate from "@/useApi/useCreate";
+import Button from "@/component/ui/Button";
 
 export default function UpdateUser(){
     const {postCreate} = useCreate();

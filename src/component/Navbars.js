@@ -1,5 +1,6 @@
 import { Navbar,Container,Nav } from "react-bootstrap";
 import { useRouter } from "next/router";
+import Button from "./ui/Button";
 
 export default function Navbars(){
     const route = useRouter();
@@ -10,8 +11,8 @@ export default function Navbars(){
                 <Navbar.Brand className="fw-bold fs-4" onClick={() => route.push("/")} style={{cursor:"pointer"}}>Travel<span style={{color:"#0d6efd"}}>Land</span></Navbar.Brand>
                 <div><input placeholder="search" className="search-navbar"/></div>
                 <Nav className="gap-3">
-                    <button className="btn btn-outline-light text-black" onClick={()=> route.push("/detail/Login")}>Login</button>
-                    <button className="btn btn-primary" onClick={()=> route.push("/detail/Register")}>Register</button>
+                    <Button className="btn btn-outline-light text-black" onClick={()=> route.push("/detail/Login")}>Login</Button>
+                    <Button className="btn btn-primary" onClick={()=> route.push("/detail/Register")}>Register</Button>
                 </Nav>
             </Container>
         </Navbar>

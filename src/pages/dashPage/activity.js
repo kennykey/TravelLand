@@ -4,6 +4,7 @@ import useDelete from "@/useApi/useDelete"
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Button from "@/component/ui/Button";
 
 
 export default function Activity(){
@@ -30,7 +31,7 @@ export default function Activity(){
         <NavDash>
             <div className="container px-4 tengah wrap gap-3 my-5">
                 <div className="text-end my-3" style={{width:"94%"}}>
-                    <button className="btn btn-primary" onClick={()=>route.push('/form/activity/addActivity')}>Add</button>
+                    <Button className="btn btn-primary" onClick={()=>route.push('/form/activity/addActivity')}>Add</Button>
                 </div>
                 {activities.length>0 &&(
                     activities.map((activi)=>(
@@ -39,8 +40,8 @@ export default function Activity(){
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{activi.title}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
-                                    <button className="btn btn-success" onClick={()=> route.push(`/form/activity/${activi.id}`)}>Update</button>
-                                    <button className="btn btn-danger" onClick={() => handleDelete(activi.id)}>Delete</button>
+                                    <Button className="btn btn-success" onClick={()=> route.push(`/form/activity/${activi.id}`)}>Update</Button>
+                                    <Button className="btn btn-danger" onClick={() => handleDelete(activi.id)}>Delete</Button>
                                 </div>
                             </div>
                         </div>

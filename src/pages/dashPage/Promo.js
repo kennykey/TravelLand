@@ -4,6 +4,7 @@ import useDelete from "@/useApi/useDelete"
 import { useRouter } from "next/router";
 import { useEffect,useState } from "react";
 import useGetData from "@/useApi/useGetData";
+import Button from "@/component/ui/Button";
 
  export default function Promo(){
     const {deleteData} = useDelete();
@@ -30,7 +31,7 @@ import useGetData from "@/useApi/useGetData";
         <NavDash>
             <div className="container px-4 tengah wrap gap-3 my-5">
                 <div className="text-end my-3" style={{width:"94%"}}>
-                    <button className="btn btn-primary" onClick={()=>route.push('/form/promo/addPromo')}>Add</button>
+                    <Button className="btn btn-primary" onClick={()=>route.push('/form/promo/addPromo')}>Add</Button>
                 </div>
                 {promo.length>0 &&(
                     promo.map((promon)=>(
@@ -39,8 +40,8 @@ import useGetData from "@/useApi/useGetData";
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{promon.title}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
-                                    <button className="btn btn-success" onClick={()=>route.push(`/form/promo/${promon.id}`)}>Update</button>
-                                    <button className="btn btn-danger" onClick={() => handleDelete(promon.id)}>Delete</button>
+                                    <Button className="btn btn-success" onClick={()=>route.push(`/form/promo/${promon.id}`)}>Update</Button>
+                                    <Button className="btn btn-danger" onClick={() => handleDelete(promon.id)}>Delete</Button>
                                 </div>
                             </div>
                         </div>

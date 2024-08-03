@@ -1,11 +1,13 @@
 "use client"
-import { Container,Form,Button } from "react-bootstrap"
+import { Container,Form } from "react-bootstrap"
 import React ,{ useState } from "react"
 import LayOut from "@/component/LayOut";
 import useAuth from "@/useApi/useAuth";
 import { useDispatch } from "react-redux";
 import useCreate from "@/useApi/useCreate";
 import Image from "next/image";
+import Button from "@/component/ui/Button";
+import Input from "@/component/ui/Input";
 
 export default function Register() {
   const [image, setImage] = useState([]);
@@ -66,22 +68,10 @@ export default function Register() {
         <Container>
           <Form onSubmit={handleRegister}>
             <p>{prompt}</p>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" name="email"/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter name" name="name"/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicpassword">
-              <Form.Label>password</Form.Label>
-              <Form.Control type="password" placeholder="Enter password" name="password"/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicpasswordRepeat">
-              <Form.Label>passwordRepeat</Form.Label>
-              <Form.Control type="password" placeholder="Enter password confirm" name="passwordRepeat"/>
-            </Form.Group>
+            <Input label='email' id='email' name='email' type='email'/>
+            <Input label='name' id='name' name='name' type='text'/>
+            <Input label='pasword' id='password' name='password' type='password'/>
+            <Input label='password confirm' id='password' name='passwordRepeat' type='password'/>
             <Form.Group className="mb-3" controlId="formBasicrole">
               <Form.Label>role</Form.Label>
               <Form.Select name="role">
@@ -89,16 +79,10 @@ export default function Register() {
                 <option role="admin">admin</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicprofilePictureUrl">
-              <Form.Label>profilePictureUrl</Form.Label>
-              <Form.Control type="file" placeholder="Enter image file" name="image" onChange={handleChange}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicphoneNumber">
-              <Form.Label>phoneNumber</Form.Label>
-              <Form.Control type="number" placeholder="Enter phoneNumber" name="phoneNumber"/>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Register
+            <Input label='image' id='image' name='image' type='file' onChange={handleChange}/>
+            <Input label='phone' id='phone' name='phoneNumber' type='number'/>
+            <Button type='submit' className='btn btn-primary w-100'>
+                Submit
             </Button>
           </Form>
         </Container>

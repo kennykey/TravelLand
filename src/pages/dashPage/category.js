@@ -4,6 +4,7 @@ import useDelete from "@/useApi/useDelete"
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Button from "@/component/ui/Button";
 
 export default function Category(){
     const [categories, setCategory] = useState([])
@@ -30,7 +31,7 @@ export default function Category(){
         <NavDash>
             <div className="container px-4 tengah wrap gap-3 my-5">
             <   div className="text-end my-3" style={{width:"94%"}}>
-                    <button className="btn btn-primary" onClick={()=>route.push('/form/category/addCategory')}>Add</button>
+                    <Button className="btn btn-primary" onClick={()=>route.push('/form/category/addCategory')}>Add</Button>
                 </div>
                 {categories.length>0 &&(
                     categories.map((catego)=>(
@@ -39,8 +40,8 @@ export default function Category(){
                             <div style={{background:"#EEE"}}>
                                 <h6 className="fw-bold pt-3">{catego.name}</h6>
                                 <div className="d-flex gap-3 tengah p-3" >
-                                    <button className="btn btn-success" onClick={()=> route.push(`/form/category/${catego.id}`)}>Update</button>
-                                    <button className="btn btn-danger" onClick={() => handleDelete(catego.id)}>Delete</button>
+                                    <Button className="btn btn-success" onClick={()=> route.push(`/form/category/${catego.id}`)}>Update</Button>
+                                    <Button className="btn btn-danger" onClick={() => handleDelete(catego.id)}>Delete</Button>
                                 </div>
                             </div>
                         </div>

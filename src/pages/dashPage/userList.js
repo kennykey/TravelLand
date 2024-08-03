@@ -3,6 +3,7 @@ import NavDash from "@/component/NavDash";
 import useGetData from "@/useApi/useGetData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Button from "@/component/ui/Button";
 
 
 export default function userList(){
@@ -40,7 +41,7 @@ export default function userList(){
                                 <td>{userData.phoneNumber}</td>
                                 <td>
                                     <div className="d-flex">
-                                        <button className="btn btn-success" onClick={()=>route.push(`/form/user/${userData.id}`)}>Update</button>
+                                        <Button className="btn btn-success" onClick={()=>route.push(`/form/user/${userData.id}`)}>Update</Button>
                                     </div>
                                 </td>
                             </tr>

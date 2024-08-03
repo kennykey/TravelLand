@@ -3,8 +3,9 @@ import useGetData from "@/useApi/useGetData";
 import useCreate from "@/useApi/useCreate"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Container,Form,Button } from "react-bootstrap";
-
+import { Container,Form } from "react-bootstrap";
+import Input from "@/component/ui/Input";
+import Button from "@/component/ui/Button";
 
 export default function updateBanner(){
     const {getData} = useGetData();
@@ -58,13 +59,9 @@ export default function updateBanner(){
                 <Form  onSubmit={handleUpload} style={{width:"400px"}}>
                     <p>{promp}</p>
                     <img src={bannerImage} alt="image-upload" style={{width:"200px", height:"200px"}}/>
-                    <Form.Group className="mb-3" controlId="formName">
-                        <Form.Control type="text" placeholder="Enter name banner" name="name"/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formImage">
-                        <Form.Control type="file" placeholder="Enter image file" name="image" onChange={handleChange}/>
-                    </Form.Group>
-                    <Button variant="primary" type="submit" className="w-100">
+                    <Input type='text' id='name' name='name'/>
+                    <Input type='file' name='image' id='image' onChange={handleChange}/>
+                    <Button type="submit" className="btn btn-primary w-100">
                         Submit
                     </Button>
                 </Form>

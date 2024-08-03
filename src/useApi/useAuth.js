@@ -20,7 +20,6 @@ export default function useAuth(){
         route.push("/dashPage/userList");
         setLoading(false); 
         } catch(error){
-        console.error("Gagal melakukan autentikasi:", error.message);
         alert("Gagal melakukan autentikasi. Silakan coba lagi.");
         setLoading(false); 
         }
